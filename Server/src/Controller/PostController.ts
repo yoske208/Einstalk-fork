@@ -1,0 +1,1 @@
+import postServices, {addPost,deletePost,editPost,getOnePost,getPosts} from "../Services/PostService"
