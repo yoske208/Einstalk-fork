@@ -5,6 +5,7 @@ import { IUser } from "./userModel";
 export interface IComment {
   content: string;
   author: IUser['_id'];
+  
 }
 
 export interface IPost extends Document {
