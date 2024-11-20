@@ -1,13 +1,12 @@
 import fs from "fs";
-// import { generateAuthToken } from "../../middleware/jwt";
-// import { comparePassword } from "../../helpers/bcrypt";
 import { CookieOptions } from "express";
 import { Request, Response } from 'express';
-// import User from '../model/userModel'
+import bcrypt from 'bcrypt'
+import User from '../models/userModel'
 
 
-const data: string = fs.readFileSync("./data.json", "utf-8");
-const Users = JSON.parse(data)
+// const data: string = fs.readFileSync("./data.json", "utf-8");
+// const Users = JSON.parse(data)
 
 const cookieConfig: CookieOptions = {
     httpOnly: true,          // הגנה מפני XSS - הקוקי לא נגיש דרך JavaScript בצד הלקוח
@@ -26,7 +25,7 @@ const loginUser = async (user: userDTO, res: Response) => {
 		const foundUser = await User.findOne({ username: user.username })
 
 		if (!foundUser) return console.log("User not found")
-		const isPasswordCorrect = await comparePassword(user.password, foundUser.password)
+		const isPasswordCorrect = await foundUser.comparePassword(user.password)
 		if (!isPasswordCorrect) return console.log("Incorrect password or Email");
 return foundUser
 	
