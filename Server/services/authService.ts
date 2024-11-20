@@ -1,38 +1,50 @@
-import fs from "fs";
-import { CookieOptions } from "express";
-import { Request, Response } from 'express';
-import bcrypt from 'bcrypt'
-import User from '../models/userModel'
-
-
-// const data: string = fs.readFileSync("./data.json", "utf-8");
-// const Users = JSON.parse(data)
-
-const cookieConfig: CookieOptions = {
-    httpOnly: true,          // הגנה מפני XSS - הקוקי לא נגיש דרך JavaScript בצד הלקוח
-    secure: true,            // שליחת הקוקי רק בחיבור HTTPS
-    sameSite: 'strict',      // הגנה מפני CSRF
-    maxAge: 24 * 60 * 60 * 1000  // תוקף של יום אחד (במילישניות)
-};
+import bcrypt from "bcrypt";
+import User from "../models/userModel";
+import { Response } from "express";
 
 interface userDTO {
-	username: string,
-	password: string
+	username: string;
+	password: string;
 }
+
+const registerUser = async (user: { username: string; password: string }): Promise<object | null> => {
+    try {
+        const existingUser = await User.findOne({ username: user.username });
+        if (existingUser) {
+            throw new Error("Username already exists");
+        }
+
+        const hashedPassword = await bcrypt.hash(user.password, 10);
+
+        const newUser = new User({
+            username: user.username,
+            password: hashedPassword,
+        });
+
+        await newUser.save();
+
+        return newUser;
+    } catch (error: any) {
+        throw new Error(error?.message || "error from register");
+    }
+};
 
 const loginUser = async (user: userDTO, res: Response) => {
 	try {
-		const foundUser = await User.findOne({ username: user.username })
+		const foundUser = await User.findOne({ username: user.username });
 
-		if (!foundUser) return console.log("User not found")
-		const isPasswordCorrect = await foundUser.comparePassword(user.password)
-		if (!isPasswordCorrect) return console.log("Incorrect password or Email");
-return foundUser
-	
+		if (!foundUser) throw new Error("User not found");
+		const isPasswordCorrect = await bcrypt.compare(
+			user.password,
+			foundUser.password
+		);
+		if (!isPasswordCorrect) throw new Error("Incorrect password or email");
+
+		return foundUser;
 	} catch (error) {
-		throw new Error("Failed to login")
+		throw new Error("Failed to login");
 	}
-}
+};
 
 const logoutUser = (res: Response): void => {
 	try {
@@ -45,7 +57,5 @@ const logoutUser = (res: Response): void => {
 		console.log(error);
 	}
 };
-      export {
-        loginUser,
-        logoutUser
-      }
+
+export { registerUser, loginUser, logoutUser };
