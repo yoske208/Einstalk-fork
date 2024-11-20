@@ -1,0 +1,27 @@
+[ 
+    {
+    "username": "Gadi",
+    "password": "Gadi",
+    "image": "string"
+    },
+    {
+    "username": "Shlomo",
+    "password": "Shlomo",
+    "image": "string"
+    },
+    {
+    "username": "Madmon",
+    "password": "Madmon",
+    "image": "string"
+    },
+    {
+    "username": "Reuven",
+    "password": "Reuven",
+    "image": "string"
+    },
+    {
+    "username": "Kobi",
+    "password": "Kobi",
+    "image": "string"
+    }
+]
