@@ -44,9 +44,6 @@ const PostSchema = new Schema<IPost>({
     type: Schema.Types.ObjectId,
     ref: 'User'
   },
-  image:{
-    type:String
-  },
   comments:{
     type: [CommentSchema]
   }
