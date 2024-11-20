@@ -5,7 +5,6 @@ export interface IUser extends Document {
   username: string;
   password: string;
   image:string;
-  posts: Types.ObjectId[];
   comparePassword(userPassword:string) : Promise<boolean>
 }
 
@@ -23,14 +22,8 @@ const UserSchema = new Schema<IUser>({
     required: [true,'password is required'],
     min: [8, 'password to short']
   },
-  email: {
-    type: String,
-    required: [true,'email is required'],
-    min:[8,'to shotrt'],
-  },
-  posts:{
-    type: [Schema.Types.ObjectId],
-    ref: 'Post'
+  image: {
+    type: String
   }
 });
 UserSchema.pre<IUser>('save',async function(next) {
