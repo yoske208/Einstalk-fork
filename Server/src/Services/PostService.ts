@@ -48,7 +48,7 @@ const editPost = async (userId: string, newData: Partial<IUser>) => {
     );
     return updatePost;
   } catch (error: any) {
-    return `cant find the mongo DB ${error}`;
+    return  (`cant find the mongo DB ${error}`);
   }
 };
 
