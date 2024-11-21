@@ -1,0 +1,43 @@
+יצירת משתמש חדש
+
+ניתוב
+/auth/register
+מתודה
+post
+
+body = {username:string,password:string}
+
+בהמשך אני מצפה לקבל גם תמונה
+אבל נכון לעכשיו זה לא עובד
+
+-------כניסה/login-------
+
+ניתוב
+/auth/login
+מתודה
+post
+
+body = {username:string,password:string}
+
+--------כתיבת חידה חדשה--------
+חובה login
+
+ניתוב
+/post
+מתודה
+post
+
+body = {title:string,content:string}
+
+-------כתיבת תגובה---------
+חובה login
+
+ניתוב
+/post/:id
+מתודה
+put
+
+params = quis id
+
+body = {content:string}
+
