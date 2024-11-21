@@ -8,9 +8,9 @@ const router = express.Router();
 router.post("/login", async (req: Request, res: Response): Promise<void> => {
   try {
     const user = req.body;
-    const userMan = await loginUser(user, res);
+    const userMan = await loginUser(user);
     if (userMan) {
-      const token = genarateToken(user.id);
+      const token = genarateToken(userMan._id as string);
       res.cookie("token", token, {
         httpOnly: true,
         secure: false,

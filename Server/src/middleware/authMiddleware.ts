@@ -20,11 +20,9 @@ export const authMiddleware = (req:authRequest,res:Response,next:NextFunction): 
         const decoded = jwt.verify(token, process.env.TOKEN_SECRET as string) as JwtPayload
         req.user = new mongoose.Types.ObjectId(decoded._id)
         console.log(req.user);
-        
         next()
     } catch (error) {
         res.status(401).json({message: 'token is not valid'})
         console.log(error);
-        
     }
 }
