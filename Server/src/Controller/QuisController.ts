@@ -5,14 +5,20 @@ import {
   editPost,
   getOnePost,
   getPosts,
-} from "../Services/PostService";
+} from "../Services/QuisService";
 
 const router: IRouter = express.Router();
 
 router.get("/", async (req: Request, res: Response): Promise<void> => {
   try {
+    console.log(1);
+    
     const allPosts = await getPosts();
+    console.log(allPosts);
+
     res.json(allPosts);
+    console.log(res.json());
+    
   } catch (error: any) {
     error.status || 404, error.message;
   }

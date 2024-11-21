@@ -1,10 +1,14 @@
-import Post, { IPost } from "../Models/postModel";
+import Quiz, { IQuis } from "../Models/QuisModel";
 import User, { IUser } from "../Models/userModel";
 
 const getPosts = async () => {
   try {
-    const posts = await Post.find();
+    const posts = await Quiz.find((post: any) => posts.push(post));
+    console.log(posts);
+
     if (!posts) return "cant find posts";
+    console.log(41);
+
     return posts;
   } catch (error: any) {
     return `cant find mongo DB ${error}`;
@@ -13,7 +17,9 @@ const getPosts = async () => {
 
 const getOnePost = async (postId: string) => {
   try {
-    const post = await Post.findById(postId);
+    console.log(postId);
+    const post = await Quiz.findById(postId);
+    console.log(post);
     if (!post) return "the post is not found";
     return post;
   } catch (error: any) {
@@ -21,9 +27,9 @@ const getOnePost = async (postId: string) => {
   }
 };
 
-const addPost = async (postData: IPost) => {
+const addPost = async (postData: IQuis) => {
   try {
-    const newPost = new Post(postData);
+    const newPost = new Quiz(postData);
     if (!newPost) return "cant to add this post";
     await postData.save();
     return postData;
@@ -54,7 +60,7 @@ const editPost = async (userId: string, newData: Partial<IUser>) => {
 
 const deletePost = async (postId: string) => {
   try {
-    const post = await Post.findByIdAndDelete(postId);
+    const post = await Quiz.findByIdAndDelete(postId);
     return "post deleted";
   } catch (error: any) {
     return `cant find the mongo DB ${error}`;
