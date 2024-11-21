@@ -7,13 +7,13 @@ export interface IUser{
 
 export interface IComment {
     content : string
-    author : IUser[]
+    author : string;
 }
 
 export interface IPuzzels {
     title : string,
     content : string,
-    author : IUser[],
+    author : string,
     comments : IComment []
 }
 
