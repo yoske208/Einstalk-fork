@@ -1,4 +1,3 @@
-
 import mongoose, { Schema, Document, Types } from "mongoose";
 import { IUser } from "./userModel";
 
@@ -10,22 +9,24 @@ export interface IComment {
 export interface IQuis extends Document {
   title: string;
   content: string;
-  author: IUser['_id'];
+  author: IUser["_id"];
   comments: IComment[];
 }
 
-
-export const CommentSchema = new Schema<IComment>({
-  content:{
-    type: String,
-    required: true,
-    min:1
+export const CommentSchema = new Schema<IComment>(
+  {
+    content: {
+      type: String,
+      required: true,
+      min: 1,
+    },
+    author: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
-  author:{
-    type: Schema.Types.ObjectId,
-    ref: 'User'
-  }
-},{timestamps:true})
+  { timestamps: true }
+);
 
 const PostSchema = new Schema<IQuis>({
   //post schema
