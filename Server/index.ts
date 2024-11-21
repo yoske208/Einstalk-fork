@@ -3,7 +3,7 @@ import cors from "cors"
 import "dotenv/config";
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
-import router from "./Controller/authController";
+import router from "./src/Routers/QuisRouter";
 
 const app : Express = express()
 
@@ -18,7 +18,7 @@ app.use(router);
 
 mongoose.connect(process.env.MONGO_URI || "")
   .then(() => {
-    console.log(("Connected to MongoDB Atlas")); 
+    console.log(("Connected to MongoDB ")); 
   })
   .catch((error) => {
     console.error((`Error connecting to MongoDB:, ${error}`));  
