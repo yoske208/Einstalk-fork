@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import User, { IUser } from "../models/userModel";
+import User, { IUser } from "../Models/userModel";
 import { Response } from "express";
 
 interface userDTO {

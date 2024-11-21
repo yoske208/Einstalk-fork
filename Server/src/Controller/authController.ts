@@ -1,5 +1,5 @@
 import express, { Request, Response, NextFunction } from "express";
-import { loginUser, logoutUser, registerUser } from "../services/authService";
+import { loginUser, logoutUser, registerUser } from "../Services/authService";
 import { genarateToken } from "../utils/JWT";
 import { authMiddleware } from "../middleware/authMiddleware";
 
