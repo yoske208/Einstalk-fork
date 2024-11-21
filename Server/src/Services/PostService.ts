@@ -4,7 +4,7 @@ import User, { IUser } from "../Models/userModel";
 const getPosts = async () => {
   try {
     const posts = await Post.find();
-    if (!posts) return "cant find users";
+    if (!posts) return "cant find posts";
     return posts;
   } catch (error: any) {
     return `cant find mongo DB ${error}`;

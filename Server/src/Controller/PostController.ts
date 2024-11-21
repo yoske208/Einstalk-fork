@@ -20,7 +20,7 @@ router.get("/", async (req: Request, res: Response): Promise<void> => {
 
 router.get("/:id", async (req: Request, res: Response): Promise<void> => {
   try {
-    const post = await getOnePost(req.params.id);
+    const post = await getOnePost(req.params._id);
     res.json(post);
   } catch (error: any) {
     error.status || 404, error.message;
@@ -41,7 +41,7 @@ router.post("/",async (req:Request,res:Response) :Promise<void> => {
 
 router.put("/:id" ,async (req:Request,res:Response) : Promise<void> => {
     try {
-        const updatepost = await editPost(req.params.id,req.body)
+        const updatepost = await editPost(req.params._id,req.body)
         res.json(updatepost)
     } catch (error:any) {
         error.status || 404, error.message;
@@ -51,7 +51,7 @@ router.put("/:id" ,async (req:Request,res:Response) : Promise<void> => {
 
 router.delete("/:id",async (req:Request,res:Response) : Promise<void> => {
     try {
-        const post = await deletePost(req.params.id)
+        const post = await deletePost(req.params._id)
         res.json(post)
     } catch (error:any) {
         error.status || 404, error.message;
