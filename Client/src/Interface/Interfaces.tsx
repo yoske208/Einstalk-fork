@@ -1,4 +1,5 @@
 export interface IUser{
+    _id: string
     username : string,
     password : string,
     image : string
@@ -7,13 +8,14 @@ export interface IUser{
 
 export interface IComment {
     content : string
-    author : IUser[]
+    author : string
 }
 
 export interface IPuzzels {
+    _id: string
     title : string,
     content : string,
-    author : IUser[],
+    author : string,
     comments : IComment []
 }
 
