@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import User from "../models/userModel";
+import User, { IUser } from "../models/userModel";
 import { Response } from "express";
 
 interface userDTO {
@@ -7,18 +7,15 @@ interface userDTO {
 	password: string;
 }
 
-const registerUser = async (user: { username: string; password: string }): Promise<object | null> => {
+const registerUser = async ({ username, password,}:userDTO): Promise<IUser | null> => {
     try {
-        const existingUser = await User.findOne({ username: user.username });
+        const existingUser = await User.findOne({ username });
         if (existingUser) {
             throw new Error("Username already exists");
         }
-
-        const hashedPassword = await bcrypt.hash(user.password, 10);
-
         const newUser = new User({
-            username: user.username,
-            password: hashedPassword,
+            username,
+            password
         });
 
         await newUser.save();
