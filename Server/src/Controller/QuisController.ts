@@ -1,11 +1,14 @@
 import express, { IRouter, Request, Response } from "express";
 import {
+  addComment,
   addPost,
   deletePost,
   editPost,
   getOnePost,
   getPosts,
 } from "../Services/QuisService";
+import Quis, { IQuis } from "../Models/QuisModel";
+import { authRequest } from "../middleware/authMiddleware";
 
 const router: IRouter = express.Router();
 
@@ -32,23 +35,37 @@ router.get("/:id", async (req: Request, res: Response): Promise<void> => {
     error.status || 404, error.message;
   }
 });
-
-router.post("/",async (req:Request,res:Response) :Promise<void> => {
+// creat post
+router.post("/",async (req:authRequest,res:Response) :Promise<void> => {
     try {
-        const post = await addPost(req.body)
+      const { title, content } = req.body; 
+      const author = req.user
+      if (! title || !content || !author) {
+        res.status(400).json({ message: " אחד מהאלמנטים חסר" });
+        return;
+     } 
+     const newQuis = new Quis({title,content,author,comments:[]}) 
+        const post = await addPost(newQuis)
         res.status(200).json(post)
         
     } catch (error:any) {
-        error.status || 404, error.message;
-
-        
+        error.status || 404, error.message;  
     }
 })
 
-router.put("/:id" ,async (req:Request,res:Response) : Promise<void> => {
+router.put("/:id" ,async (req:authRequest,res:Response) : Promise<void> => {
     try {
-        const updatepost = await editPost(req.params._id,req.body)
-        res.json(updatepost)
+      const id = req.params.id
+      const { content } = req.body; 
+      const author = req.user
+      if (!content || !author) {
+        res.status(400).json({ message: " אחד מהאלמנטים חסר" });
+        return;
+     }   
+     const newComment = {content,author,};
+     const savedComment = await addComment(id,newComment);
+ 
+        res.json(savedComment)
     } catch (error:any) {
         error.status || 404, error.message;
         

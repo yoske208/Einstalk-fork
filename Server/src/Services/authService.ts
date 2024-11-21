@@ -29,7 +29,7 @@ const registerUser = async ({
   }
 };
 
-const loginUser = async (user: userDTO, res: Response) => {
+const loginUser = async (user: userDTO) => {
   try {
     const foundUser = await User.findOne({ username: user.username });
 
