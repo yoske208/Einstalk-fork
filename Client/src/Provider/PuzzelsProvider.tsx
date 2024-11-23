@@ -16,7 +16,9 @@ export const PuzzelContext = React.createContext<PuzzelProps>({
 });
 
 const PuzzelsProvider = ({ children }: Props) => {
+  
   const [puzzels, setPuzzels] = useState<IPuzzels[]>([]);
+
   return (
     <div>
       <PuzzelContext.Provider value={{ puzzels, setPuzzels }}>

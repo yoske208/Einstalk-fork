@@ -5,6 +5,8 @@ interface Props {
 }
 
 export default function DisplayPuzzles({ puzzles }: Props) {
+    console.log(puzzles);
+    
   return (
     <>
       <div>
