@@ -3,7 +3,6 @@ import Stiles from'./login.module.css'
 import { Link } from 'react-router-dom'
 // import axios from 'axios'
 import { BooleanProps, isKyePressContext } from '../../Provider/CociProvider'
-import DialogComp from '../dialog-comp/DialogComp'
 import useFatch from '../../Hooks/hookFetch'
 import { PuzzelProps } from '../../Provider/PuzzelsProvider'
 
@@ -12,13 +11,9 @@ const LoginComp = () => {
     const [password, setPassword] = useState<string>('')
     const [login, setLogin] = useState<boolean>(false)
     const [showPassword, setShowPassword] = useState<boolean>(false);
-    const isAuth = useContext<BooleanProps>(isKyePressContext)
     const { postFetch} = useFatch<PuzzelProps[]>('http://localhost:3040/auth/login')
-
-    useEffect(()=>{
-      console.log(45);
-      console.log(isAuth.isPress);
-    },[isAuth.isPress])
+    const isAuth = useContext<BooleanProps>(isKeyPressContext)
+    
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault(); // Prevent page reload
         if(login){
@@ -32,7 +27,6 @@ const LoginComp = () => {
     }
   return (
     <>
-    {isAuth.isPress && <DialogComp/>}
       
     <div >
       <form onSubmit={handleSubmit}
