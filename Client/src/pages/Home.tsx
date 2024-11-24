@@ -1,10 +1,14 @@
-import React from 'react'
-import PageHeader from './PageHeader'
+import { useContext } from 'react'
+import DisplayPuzzles from '../components/DisplayPuzzles'
+import { PuzzelContext } from '../Provider/PuzzelsProvider'
 
 export default function Home() {
+  const { puzzels } = useContext(PuzzelContext)
+  
+
   return (
     <div>
-      <PageHeader title='home' />
+      <DisplayPuzzles puzzles={puzzels}/>
     </div>
   )
 }

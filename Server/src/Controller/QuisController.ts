@@ -8,7 +8,7 @@ import {
   getPosts,
 } from "../Services/QuisService";
 import Quis, { IQuis } from "../Models/QuisModel";
-import { authRequest } from "../middleware/authMiddleware";
+import { authMiddleware, authRequest } from "../middleware/authMiddleware";
 
 const router: IRouter = express.Router();
 
@@ -36,7 +36,7 @@ router.get("/:id", async (req: Request, res: Response): Promise<void> => {
   }
 });
 // creat post
-router.post("/",async (req:authRequest,res:Response) :Promise<void> => {
+router.post("/", authMiddleware,async (req:authRequest,res:Response) :Promise<void> => {
     try {
       const { title, content } = req.body; 
       const author = req.user
@@ -53,7 +53,7 @@ router.post("/",async (req:authRequest,res:Response) :Promise<void> => {
     }
 })
 
-router.put("/:id" ,async (req:authRequest,res:Response) : Promise<void> => {
+router.put("/:id" ,authMiddleware ,async (req:authRequest,res:Response) : Promise<void> => {
     try {
       const id = req.params.id
       const { content } = req.body; 

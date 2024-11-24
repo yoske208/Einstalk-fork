@@ -1,10 +1,7 @@
-import React from 'react'
+import PuzzleComponent from '../components/PuzzleComponent'
 
 export default function Puzzle() {
   return (
-    <>
-    <h1>this is the puzze page</h1>
-    </>
-    
+    <PuzzleComponent id={""} />
   )
 }
