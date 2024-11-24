@@ -10,10 +10,7 @@ export interface UserProps {
   setUser: React.Dispatch<React.SetStateAction<IUser | null>>;
 }
 
-export const UserConntext = createContext<UserProps>({
-  user: null,
-  setUser: (): void => {}
-});
+export const UserConntext = createContext<UserProps| null>(null);
 
 const UserProvider = ({ children }: Props) => {
   const [user, setUser] = useState<IUser|null>(null);
