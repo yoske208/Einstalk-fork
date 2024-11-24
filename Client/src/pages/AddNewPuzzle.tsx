@@ -1,7 +1,11 @@
 import React from 'react'
+import PageHeader from './PageHeader'
 
 export default function AddNewPuzzle() {
   return (
-    <div>AddNewPuzzle</div>
+    <div>
+      <PageHeader title='new puzzle' subTitle='add new puzzle'/>
+
+    </div>
   )
 }

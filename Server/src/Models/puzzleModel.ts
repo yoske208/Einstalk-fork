@@ -6,7 +6,7 @@ export interface IComment {
   author: IUser['_id'];
 }
 
-export interface IQuis extends Document {
+export interface IPuzzele extends Document {
   title: string;
   content: string;
   author: IUser["_id"];
@@ -28,7 +28,7 @@ export const CommentSchema = new Schema<IComment>(
   { timestamps: true }
 );
 
-const PostSchema = new Schema<IQuis>({
+const PuzzeleSchema = new Schema<IPuzzele>({
   //post schema
   title:{
     type:String,
@@ -49,6 +49,6 @@ const PostSchema = new Schema<IQuis>({
     type: [CommentSchema]
   }
 },{timestamps:true})
-PostSchema.index({author:1})
+PuzzeleSchema.index({author:1})
 CommentSchema.index({author:1})
-export default mongoose.model<IQuis>("PostPuzzle", PostSchema);
+export default mongoose.model<IPuzzele>("PostPuzzle", PuzzeleSchema);
