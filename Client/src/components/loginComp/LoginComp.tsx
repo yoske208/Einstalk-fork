@@ -2,15 +2,15 @@ import React, { useContext, useState } from 'react'
 import Stiles from'./login.module.css'
 import { Link } from 'react-router-dom'
 import useFatch from '../../Hooks/hookFetch'
-import { PuzzelProps } from '../../Provider/PuzzelsProvider'
 import { BooleanProps, isKeyPressContext } from '../../Provider/CookieProvider'
+import { UserProps } from '../../Provider/UserProvider'
 
 const LoginComp = () => {
     const [username, setUsername] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [login, setLogin] = useState<boolean>(false)
     const [showPassword, setShowPassword] = useState<boolean>(false);
-    const { postFetch} = useFatch<PuzzelProps[]>('http://localhost:3040/auth/login')
+    const { postFetch} = useFatch<UserProps[]>('http://localhost:3040/auth/login')
     const isAuth = useContext<BooleanProps>(isKeyPressContext)
     
     const handleSubmit = async (event: React.FormEvent) => {
