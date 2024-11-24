@@ -7,7 +7,7 @@
 body {
   font-family: 'Poppins', sans-serif;
   background-color: #f9f9f9;
-  color: #65dcd0;
+  color: #08f8e0;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -46,6 +46,7 @@ header {
 main {
   flex: 1;
   display: flex;
+  text-align: center;
   flex-direction: column;
   align-items: center;
   padding: 20px;
@@ -145,7 +146,7 @@ form {
 label {
   font-weight: 500;
   margin-bottom: 5px;
-  color: #333;
+  color: #333333;
 }
 input[type="text"],
 input[type="email"]
