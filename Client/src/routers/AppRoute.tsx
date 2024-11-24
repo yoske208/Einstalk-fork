@@ -8,6 +8,7 @@ import Users from '../pages/Users'
 import Profile from '../pages/Profile'
 import AddNewUser from '../pages/AddNewUser'
 import NotFound from '../pages/NotFound'
+import LoginPage from '../pages/LoginPage'
 
 export default function AppRoute() {
   return (
@@ -20,6 +21,7 @@ export default function AppRoute() {
             <Route path='/Profile' element={<Profile />}></Route>
             <Route path='/addNewUser' element={<AddNewUser />}></Route>
             <Route path='/addNewPuzzle' element={<AddNewPuzzle />}></Route>
+            <Route path='/login' element={<LoginPage/>}></Route>
             <Route path='/*' element={<NotFound />}></Route>
             {/* <Route path='/' element={<Home />}></Route> */}
         </Routes>

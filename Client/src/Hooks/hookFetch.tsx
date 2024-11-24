@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+
 export default function useFatch<T>(url: string): any {
   const [data, setData] = useState<T | null>(null);
   const [token, setToken] = useState<T | null>(null);
@@ -99,5 +100,5 @@ export default function useFatch<T>(url: string): any {
       return false;
     }
   };
-  return { getFatch, data, error, postFetch, token,deleteFetch,editFetch, };
+  return { getFatch, data, error, postFetch, token,deleteFetch,editFetch };
 }
