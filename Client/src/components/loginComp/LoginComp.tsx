@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 // import axios from 'axios'
 import { BooleanProps, isKeyPressContext } from "../../Provider/CookieProvider";
 import DialogComp from "../dialog-comp/DialogComp";
-import useFatch from "../../Hooks/hookFetch";
+import useFatch from "../../Hooks/useFetch";
 import { PuzzelProps } from "../../Provider/PuzzelsProvider";
 
 const LoginComp = () => {
@@ -26,7 +26,7 @@ const LoginComp = () => {
     if (login) {
       try {
         await postFetch({ username, password });
-      } catch (error: any) {
+      } catch (error) {
         console.error("Login failed:", error);
       }
     }
