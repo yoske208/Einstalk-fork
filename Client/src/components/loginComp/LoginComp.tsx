@@ -3,7 +3,7 @@ import Stiles from'./login.module.css'
 import { Link } from 'react-router-dom'
 import useFatch from '../../Hooks/hookFetch'
 import { BooleanProps, isKeyPressContext } from '../../Provider/CookieProvider'
-import { UserProps } from '../../Provider/UserProvider'
+import { UserConntext, UserProps } from '../../Provider/UserProvider'
 
 const LoginComp = () => {
     const [username, setUsername] = useState<string>('')
@@ -12,12 +12,16 @@ const LoginComp = () => {
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const { postFetch} = useFatch<UserProps[]>('http://localhost:3040/auth/login')
     const isAuth = useContext<BooleanProps>(isKeyPressContext)
+    const userConntext = useContext<UserProps| null>(UserConntext)
     
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault(); // Prevent page reload
         if(login){
             try{
-              await postFetch({username,password})
+              const res = await postFetch({username,password})
+              userConntext?.setUser(res.userMan)
+              console.log(userConntext?.user);
+              
             }catch (error: any) {
                 console.error("Login failed:", error);
             }
