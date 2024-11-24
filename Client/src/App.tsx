@@ -1,11 +1,13 @@
 import './App.css'
+import Layout from './Layout/Layout'
 import AppRoute from './routers/AppRoute'
 
 function App() {
 
   return (
     <>
-    <AppRoute/>
+    <Layout children={<AppRoute/>}/>
+
     </>
   )
 }

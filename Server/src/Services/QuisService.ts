@@ -3,7 +3,7 @@ import User, { IUser } from "../Models/userModel";
 
 const getPosts = async () => {
   try {
-    const posts = await Quiz.find((post: any) => posts.push(post));
+    const posts = await Quiz.find();
     console.log(posts);
 
     if (!posts) return "cant find posts";
@@ -15,10 +15,10 @@ const getPosts = async () => {
   }
 };
 
-const getOnePost = async (postId: string) => {
+const getOnePost = async (_id: string) => {
   try {
-    console.log(postId);
-    const post = await Quiz.findById(postId);
+    console.log(_id);
+    const post = await Quiz.findById(_id);
     console.log(post);
     if (!post) return "the post is not found";
     return post;
@@ -49,11 +49,11 @@ const addComment = async(_id:string,CommentData:IComment):Promise<IQuis| void> =
   await quis.save()
   return quis
 }
-const editPost = async (userId: string, newData: Partial<IUser>) => {
+const editPost = async (_id: string, newData: Partial<IUser>) => {
   try {
-    const user = await User.findById(userId);
+    const user = await User.findById(_id);
     const updatePost = await User.findByIdAndUpdate(
-      userId,
+      _id,
       {
         ...newData,
         password: user?.password,
@@ -69,9 +69,9 @@ const editPost = async (userId: string, newData: Partial<IUser>) => {
   }
 };
 
-const deletePost = async (postId: string) => {
+const deletePost = async (_id: string) => {
   try {
-    const post = await Quiz.findByIdAndDelete(postId);
+    const post = await Quiz.findByIdAndDelete(_id);
     return "post deleted";
   } catch (error: any) {
     return `cant find the mongo DB ${error}`;
