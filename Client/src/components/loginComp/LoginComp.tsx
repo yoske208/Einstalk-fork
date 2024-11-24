@@ -23,6 +23,7 @@ const LoginComp = () => {
             }
         }
         setLogin(false)
+      }
 
   return (
     <>
@@ -75,5 +76,5 @@ const LoginComp = () => {
     </>
   );
 };
-}
+
 export default LoginComp
