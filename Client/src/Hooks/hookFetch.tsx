@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-export default function useFatch<T>(url: string): any {
+export default function useFatch<T>(url: string) {
   const [data, setData] = useState<T | null>(null);
   const [token, setToken] = useState<T | null>(null);
   const [error, setError] = useState<string | null>(null);

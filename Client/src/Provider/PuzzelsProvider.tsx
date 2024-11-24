@@ -1,5 +1,8 @@
-import React, { SetStateAction, useState } from "react";
+import React, { SetStateAction, useEffect, useState } from "react";
 import { IPuzzels } from "../Interface/Interfaces";
+import useFatch from "../Hooks/hookFetch";
+const url = "http://localhost:3030/post"
+
 
 export interface Props {
   children: React.ReactNode;
@@ -16,8 +19,21 @@ export const PuzzelContext = React.createContext<PuzzelProps>({
 });
 
 const PuzzelsProvider = ({ children }: Props) => {
-  
   const [puzzels, setPuzzels] = useState<IPuzzels[]>([]);
+  const {getFatch,data} = useFatch<IPuzzels[]>(url)
+  useEffect(()=>{
+    getFatch()
+
+  },[])
+
+  useEffect(() => {
+    if (data) return setPuzzels(data);
+    console.log("no results");
+  }, [data]);
+  
+
+
+
 
   return (
     <div>

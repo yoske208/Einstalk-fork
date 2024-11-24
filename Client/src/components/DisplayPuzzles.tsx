@@ -1,7 +1,8 @@
 import { useFetcher } from "react-router-dom";
 import  { IPuzzels } from "../Interface/Interfaces";
 import useFatch from "../Hooks/hookFetch";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { PuzzelContext } from "../Provider/PuzzelsProvider";
 const url = "http://localhost:3030/post"
 
 
@@ -11,34 +12,22 @@ interface Props {
 }
 
 export default function DisplayPuzzles({ puzzles }: Props) {
-  const [ puzzels,setPuzzels] = useState<IPuzzels[]>([])
-  const { getFatch,data} = useFatch(url)
+  const {puzzels} = useContext(PuzzelContext)
+  if(puzzels){
 
-  useEffect(()=>{
-    getFatch()
-
-  },[])
-
-  useEffect(() => {
-    if (puzzles) return setPuzzels(data);
-    console.log("no results");
-  }, [puzzles]);
-
-    console.log(puzzles)
-    if(puzzles){
-
-    
   return (
     <>
-      <div>
-        {puzzles.map((puzzle, index) => (
-          <div key={index}>
+      <div className="card-list">
+        {puzzles.map((puzzle) => (
+          <div key={puzzle._id} className="card">
             <div>
               <h3>{puzzle.title}</h3>
               <p>Content: {puzzle.content}</p>
               <p>Author: {puzzle.author}</p>
             </div>
+            
             <div>
+              
               <h4>Comments:</h4>
               {puzzle.comments.length > 0 ? (
                 <ul>
@@ -60,3 +49,4 @@ export default function DisplayPuzzles({ puzzles }: Props) {
   );
 }
 }
+
