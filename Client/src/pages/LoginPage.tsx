@@ -1,7 +1,7 @@
-import React from 'react'
 import LoginComp from '../components/loginComp/LoginComp'
 
 const LoginPage = () => {
+  
   return (
     <>
     <h1>LoginPage</h1>

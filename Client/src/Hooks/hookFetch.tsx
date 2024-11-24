@@ -32,23 +32,15 @@ export default function useFatch<T>(url: string): any {
         credentials: "include", // חשוב בשביל קבלת הקוקיז
         body: JSON.stringify(body),
       });
-
       if (!response.ok) {
         return false;
       }
-
       const data = await response.json();
-
-      if (data.foundUser) {
-        setData(data.foundUser);
-
-        return true;
-      }
-
-      if (data.token) {
+      
+      if (data.userMan && data.token) {
+        setData(data.userMan);
         setToken(data.token);
-
-        return true;
+        return data;
       }
       return false;
     } catch (error) {
