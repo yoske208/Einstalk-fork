@@ -6,7 +6,7 @@ const getPosts = async () => {
     const posts = await Quiz.find();
     console.log(posts);
 
-    if (!posts) return "cant find posts";
+    if (!posts) throw new Error("cant find posts")
     console.log(41);
 
     return posts;
@@ -20,7 +20,7 @@ const getOnePost = async (_id: string) => {
     console.log(_id);
     const post = await Quiz.findById(_id);
     console.log(post);
-    if (!post) return "the post is not found";
+    if (!post) throw new Error("the post is not found")
     return post;
   } catch (error: any) {
     return `cant find mongo DB ${error}`;
@@ -30,6 +30,9 @@ const getOnePost = async (_id: string) => {
 const addPost = async (postData:Partial<IQuis>) => {
   try {
     const newPost = new Quiz(postData)
+    if(!newPost){
+      throw new Error('add puzzle falde')
+    }
     return await newPost.save();
   } catch (error) {
     return `cant find the mongo DB ${error}`;
@@ -37,17 +40,18 @@ const addPost = async (postData:Partial<IQuis>) => {
 };
 const addComment = async(_id:string,CommentData:IComment):Promise<IQuis| void> =>{
   if(!_id || !CommentData){
-      console.error('sum data missing')
-      return 
+      throw new Error('id or CommentData missing')
   }
   const quis =  await Quiz.findById(_id)
   if(!quis) {
-      console.error('post dos not exsist')
-      return
+      throw new Error('post dos not exsist')
   }
   quis.comments.push(CommentData)
-  await quis.save()
-  return quis
+  const newCommant = await quis.save()
+  if(!newCommant){
+    throw new Error('add comment fald')
+  }
+  return newCommant
 }
 const editPost = async (userId: string, newData: Partial<IUser>) => {
   try {
