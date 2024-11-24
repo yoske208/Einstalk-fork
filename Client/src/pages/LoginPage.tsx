@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react'
-import LoginComp from '../components/loginComp/LoginComp'
-import { BooleanProps, isKeyPressContext } from '../Provider/CociProvider'
+import { BooleanProps, isKeyPressContext } from '../Provider/CookieProvider'
 import DialogComp from '../components/dialog-comp/DialogComp'
+import LoginComp from '../components/loginComp/LoginComp'
 
 const LoginPage = () => {
   const isAuth = useContext<BooleanProps>(isKeyPressContext)
