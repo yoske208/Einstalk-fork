@@ -36,18 +36,14 @@ export default function useFatch<T>(url: string): any {
       if (!response.ok) {
         return false;
       }
-
       const data = await response.json();
 
       if (data.foundUser) {
         setData(data.foundUser);
-
         return true;
       }
-
       if (data.token) {
         setToken(data.token);
-
         return true;
       }
       return false;
