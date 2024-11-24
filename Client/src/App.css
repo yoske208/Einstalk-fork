@@ -50,7 +50,7 @@ main {
   align-items: center;
   padding: 20px;
   overflow-y: auto;
-  background-color: #fafafa;
+  background-color: hwb(171 88% 4%);
 }
 
 .card-list {

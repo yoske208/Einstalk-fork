@@ -1,7 +1,10 @@
 import React from 'react'
+import PageHeader from './PageHeader'
 
 export default function Users() {
   return (
-    <div>Users</div>
+    <div>
+      <PageHeader title='USERS' />
+    </div>
   )
 }
