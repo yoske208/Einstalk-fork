@@ -1,4 +1,4 @@
-import Quiz, { IQuis } from "../Models/QuisModel";
+import Quiz, { IComment, IQuis } from "../Models/QuisModel";
 import User, { IUser } from "../Models/userModel";
 
 const getPosts = async () => {
@@ -27,17 +27,28 @@ const getOnePost = async (postId: string) => {
   }
 };
 
-const addPost = async (postData: IQuis) => {
+const addPost = async (postData:Partial<IQuis>) => {
   try {
-    const newPost = new Quiz(postData);
-    if (!newPost) return "cant to add this post";
-    await postData.save();
-    return postData;
+    const newPost = new Quiz(postData)
+    return await newPost.save();
   } catch (error) {
     return `cant find the mongo DB ${error}`;
   }
 };
-
+const addComment = async(_id:string,CommentData:IComment):Promise<IQuis| void> =>{
+  if(!_id || !CommentData){
+      console.error('sum data missing')
+      return 
+  }
+  const quis =  await Quiz.findById(_id)
+  if(!quis) {
+      console.error('post dos not exsist')
+      return
+  }
+  quis.comments.push(CommentData)
+  await quis.save()
+  return quis
+}
 const editPost = async (userId: string, newData: Partial<IUser>) => {
   try {
     const user = await User.findById(userId);
@@ -72,5 +83,6 @@ export {
     deletePost,
     editPost,
     getOnePost,
-    getPosts 
+    getPosts,
+    addComment
 }
