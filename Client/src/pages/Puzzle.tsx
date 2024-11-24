@@ -1,8 +1,10 @@
 import { Link, useParams } from 'react-router-dom'
 import PuzzleComponent from '../components/PuzzleComponent'
 import PageHeader from './PageHeader'
-import { useContext } from 'react';
-import { PuzzelContext } from '../Provider/PuzzelsProvider';
+import AddNewPuzzle from './AddNewPuzzle/AddNewPuzzle'
+import DisplayPuzzles from '../components/DisplayPuzzles'
+import { useContext } from 'react'
+import { PuzzelContext } from '../Provider/PuzzelsProvider'
 
 export default function Puzzle() {
     const { id } = useParams();
