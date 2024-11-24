@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react'
 import Stiles from'./login.module.css'
 import { Link } from 'react-router-dom'
-import { BooleanProps, isKeyPressContext } from '../../Provider/CociProvider'
 import useFatch from '../../Hooks/hookFetch'
 import { PuzzelProps } from '../../Provider/PuzzelsProvider'
+import { BooleanProps, isKeyPressContext } from '../../Provider/CookieProvider'
 
 const LoginComp = () => {
     const [username, setUsername] = useState<string>('')
@@ -23,10 +23,9 @@ const LoginComp = () => {
             }
         }
         setLogin(false)
-    }
+
   return (
     <>
-      
     <div >
       <form onSubmit={handleSubmit}
       className={Stiles.form}>
@@ -38,8 +37,7 @@ const LoginComp = () => {
             placeholder="username"
             onChange={(e) => setUsername(e.target.value)}
           />
-        
-        
+
           <label htmlFor="password">Password</label>
           <input
             className={Stiles.input}
@@ -48,31 +46,34 @@ const LoginComp = () => {
             placeholder="password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <label htmlFor="">הצג סיסמה</label>
+          <label htmlFor="showPassword">הצג סיסמה</label>
           <input
-              type="checkbox"
-              id="showPassword"
-              checked={showPassword}
-              onChange={() => setShowPassword(!showPassword)}
-            />
+            type="checkbox"
+            id=""
+            checked={showPassword}
+            onChange={() => setShowPassword(!showPassword)}
+          />
           <div>
-            
-        <button
-        type="submit"
-        className={Stiles.button}
-        onClick={()=>setLogin(true)
-        }>Login</button>
-        <button
-        type="button"
-        className={Stiles.button}
-        onClick={()=> isAuth.setIsPress(true)}
-        >close</button>
-        </div>
-        <Link to='/addNewUser'>sign up</Link>
-      </form>
-    </div>
-  </>
-  )
+            <button
+              type="submit"
+              className={Stiles.button}
+              onClick={() => setLogin(true)}
+            >
+              Login
+            </button>
+            <button
+              type="button"
+              className={Stiles.button}
+              onClick={() => isAuth.setIsPress(true)}
+            >
+              close
+            </button>
+          </div>
+          <Link to="/addNewUser">sign up</Link>
+        </form>
+      </div>
+    </>
+  );
+};
 }
-
 export default LoginComp

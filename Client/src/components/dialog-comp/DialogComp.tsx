@@ -1,7 +1,7 @@
 import { useContext, useRef,useEffect} from 'react'
 import styles from './dialogComp.module.css'
-import { BooleanProps, isKeyPressContext } from '../../Provider/CociProvider';
 import { useNavigate } from 'react-router-dom';
+import { BooleanProps, isKeyPressContext } from '../../Provider/CookieProvider';
 
 export default function DialogComp() {
   const isAuth = useContext<BooleanProps>(isKeyPressContext)

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { PuzzelContext } from "../Provider/PuzzelsProvider";
 import { Link } from "react-router-dom";
-import CommentsComponent from "./commentsComponent";
+import CommentsComponent from "../components/CommentsComponent";
 
 
 interface Prop {
