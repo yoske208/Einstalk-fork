@@ -1,11 +1,32 @@
-import { IPuzzels } from "../Interface/Interfaces";
+import { useFetcher } from "react-router-dom";
+import  { IPuzzels } from "../Interface/Interfaces";
+import useFatch from "../Hooks/hookFetch";
+import { useEffect, useState } from "react";
+const url = "http://localhost:3030/post"
+
+
 
 interface Props {
   puzzles: IPuzzels[];
 }
 
 export default function DisplayPuzzles({ puzzles }: Props) {
-    console.log(puzzles);
+  const [ puzzels,setPuzzels] = useState<IPuzzels[]>([])
+  const { getFatch,data} = useFatch(url)
+
+  useEffect(()=>{
+    getFatch()
+
+  },[])
+
+  useEffect(() => {
+    if (puzzles) return setPuzzels(data);
+    console.log("no results");
+  }, [puzzles]);
+
+    console.log(puzzles)
+    if(puzzles){
+
     
   return (
     <>
@@ -37,4 +58,5 @@ export default function DisplayPuzzles({ puzzles }: Props) {
       </div>
     </>
   );
+}
 }
