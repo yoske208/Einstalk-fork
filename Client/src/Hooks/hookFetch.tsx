@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+
 export default function useFatch<T>(url: string): any {
   const [data, setData] = useState<T | null>(null);
   const [token, setToken] = useState<T | null>(null);
@@ -58,7 +59,7 @@ export default function useFatch<T>(url: string): any {
 
   const deleteFetch = async (id: string) => {
     try {
-      const response = await fetch(`${url}:id`, {
+      const response = await fetch(`${url}${id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         credentials: "include", // חשוב בשביל קבלת הקוקיז
@@ -80,7 +81,7 @@ export default function useFatch<T>(url: string): any {
 
   const editFetch = async (id: string) => {
     try {
-      const response = await fetch(`${url}:id`, {
+      const response = await fetch(`${url}${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         credentials: "include", // חשוב בשביל קבלת הקוקיז
@@ -99,5 +100,5 @@ export default function useFatch<T>(url: string): any {
       return false;
     }
   };
-  return { getFatch, data, error, postFetch, token,deleteFetch,editFetch, };
+  return { getFatch, data, error, postFetch, token,deleteFetch,editFetch };
 }

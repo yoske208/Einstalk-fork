@@ -1,13 +1,16 @@
 import express, { IRouter, Request, Response } from "express";
 import {
   addComment,
-  addPost,
-  deletePost,
-  editPost,
-  getOnePost,
-  getPosts,
-} from "../Services/QuisService";
-import Quis, { IQuis } from "../Models/QuisModel";
+  addPuzzele,
+  deletePuzzele,
+  editPuzzele,
+  getOnePuzzele,
+  getPuzzele,
+
+
+
+} from "../Services/PuzzelService";
+import Puzzele, { IPuzzele } from "../Models/puzzleModel";
 import { authMiddleware, authRequest } from "../middleware/authMiddleware";
 
 const router: IRouter = express.Router();
@@ -16,10 +19,11 @@ router.get("/", async (req: Request, res: Response): Promise<void> => {
   try {
     console.log(1);
     
-    const allPosts = await getPosts();
-    console.log(allPosts);
+    const allPuzzels = await getPuzzele();
+    
+    console.log(allPuzzels);
 
-    res.json(allPosts);
+    res.json(allPuzzels);
     console.log(res.json());
     
   } catch (error: any) {
@@ -29,8 +33,8 @@ router.get("/", async (req: Request, res: Response): Promise<void> => {
 
 router.get("/:id", async (req: Request, res: Response): Promise<void> => {
   try {
-    const post = await getOnePost(req.params._id);
-    res.json(post);
+    const puzzel = await getOnePuzzele(req.params.id);
+    res.json(puzzel);
   } catch (error: any) {
     error.status || 404, error.message;
   }
@@ -44,9 +48,9 @@ router.post("/", authMiddleware,async (req:authRequest,res:Response) :Promise<vo
         res.status(400).json({ message: " אחד מהאלמנטים חסר" });
         return;
      } 
-     const newQuis = new Quis({title,content,author,comments:[]}) 
-        const post = await addPost(newQuis)
-        res.status(200).json(post)
+     const newPuzzele = new Puzzele({title,content,author,comments:[]}) 
+        const puzzele = await addPuzzele(newPuzzele)
+        res.status(200).json(puzzele)
         
     } catch (error:any) {
         error.status || 404, error.message;  
@@ -74,8 +78,8 @@ router.put("/:id" ,authMiddleware ,async (req:authRequest,res:Response) : Promis
 
 router.delete("/:id",async (req:Request,res:Response) : Promise<void> => {
     try {
-        const post = await deletePost(req.params._id)
-        res.json(post)
+        const puzzele = await deletePuzzele(req.params.id)
+        res.json(puzzele)
     } catch (error:any) {
         error.status || 404, error.message;
 
@@ -84,3 +88,7 @@ router.delete("/:id",async (req:Request,res:Response) : Promise<void> => {
 }) 
 
 export default router
+// function getOnePuzzele(id: string) {
+//   throw new Error("Function not implemented.");
+// }
+
