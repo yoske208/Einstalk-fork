@@ -1,0 +1,12 @@
+.input{
+    padding: 8px;
+    margin-bottom: 8px;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+.button{
+    margin: 8px;
+}

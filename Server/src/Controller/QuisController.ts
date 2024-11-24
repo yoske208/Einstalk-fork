@@ -23,7 +23,7 @@ router.get("/", async (req: Request, res: Response): Promise<void> => {
 
 router.get("/:id", async (req: Request, res: Response): Promise<void> => {
   try {
-    const post = await getOnePost(req.params._id);
+    const post = await getOnePost(req.params.id);
     res.json(post);
   } catch (error: any) {
     error.status || 404, error.message;
