@@ -17,14 +17,13 @@ export default function useFatch<T>(url: string) {
       }
       const userdata = await res.json();
       console.log(userdata);
-
       setData(userdata);
     } catch (error) {
       setError((error as Error).message || "the error not found");
     }
   };
 
-  const postFetch = async (body: any) => {
+  const postFetch = async (body: object) => {
     try {
       const response = await fetch(url, {
         method: "POST",
@@ -32,23 +31,15 @@ export default function useFatch<T>(url: string) {
         credentials: "include", // חשוב בשביל קבלת הקוקיז
         body: JSON.stringify(body),
       });
-
       if (!response.ok) {
         return false;
       }
-
       const data = await response.json();
-
-      if (data.foundUser) {
-        setData(data.foundUser);
-
-        return true;
-      }
-
-      if (data.token) {
+      
+      if (data.userMan && data.token) {
+        setData(data.userMan);
         setToken(data.token);
-
-        return true;
+        return data;
       }
       return false;
     } catch (error) {
@@ -100,5 +91,5 @@ export default function useFatch<T>(url: string) {
       return false;
     }
   };
-  return { getFatch, data, error, postFetch, token,deleteFetch,editFetch };
+  return { getFatch, data, error, postFetch, token, deleteFetch, editFetch};
 }

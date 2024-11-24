@@ -6,16 +6,12 @@ import useFatch from '../Hooks/hookFetch'
 
 
 export default function Home() {
-  const {puzzels,setPuzzels} = useContext(PuzzelContext)
- 
-  
-  
-
-  return (
-    <div>
-      <PageHeader title='Home page' subTitle='all puzzels'/>
-      <DisplayPuzzles puzzles={puzzels}/>
-
-    </div>
-  )
+  const { puzzels } = useContext(PuzzelContext)
+  if (puzzels) {
+    return (
+      <div>ecwsdcsdcvwsvev
+        <DisplayPuzzles puzzles={puzzels}/>
+      </div>
+    )
+  }
 }

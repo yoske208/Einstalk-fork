@@ -1,10 +1,12 @@
-import React, { useContext, useRef, useState,useEffect} from 'react'
+import { useContext, useRef,useEffect} from 'react'
 import styles from './dialogComp.module.css'
+import { useNavigate } from 'react-router-dom';
 import { BooleanProps, isKeyPressContext } from '../../Provider/CookieProvider';
 
 export default function DialogComp() {
   const isAuth = useContext<BooleanProps>(isKeyPressContext)
   const modalRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate()
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -21,10 +23,16 @@ export default function DialogComp() {
   }, [isAuth.setIsPress]);
   return (
     <>
+    <div className={styles.overlay}>
     <div className={styles.modal} ref={modalRef}>
         <h3>to add comment you need to login</h3>
-        <button>login</button>
-        <button>chanel</button>
+        <button
+        onClick={()=> navigate('/login')}
+        >login</button>
+        <button
+        onClick={()=> navigate('/addNewUser')}
+        >chanel</button>
+        </div>
         </div>
     </>
   )

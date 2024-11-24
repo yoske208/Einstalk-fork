@@ -1,4 +1,5 @@
 import React, { SetStateAction, useEffect, useState } from "react";
+import React, { SetStateAction, useEffect, useState } from "react";
 import { IPuzzels } from "../Interface/Interfaces";
 import useFatch from "../Hooks/hookFetch";
 const url = "http://localhost:3030/post"

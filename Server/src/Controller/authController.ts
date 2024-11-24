@@ -7,8 +7,10 @@ const router = express.Router();
 
 router.post("/login", async (req: Request, res: Response): Promise<void> => {
   try {
-    const user = req.body;
-    const userMan = await loginUser(user);
+    const { username, password } = req.body;    
+    const userMan = await loginUser(username, password);
+    
+    //V    
     if (userMan) {
       const token = genarateToken(userMan._id as string);
       res.cookie("token", token, {
