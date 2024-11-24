@@ -8,7 +8,7 @@ import router from "./src/Routers/QuisRouter";
 const app : Express = express()
 
 app.use(cors({
-    origin: "0.0.0.0",
+    origin: "http://localhost:5173",
     credentials: true  
 }));
 
