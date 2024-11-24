@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import Stiles from'./login.module.css'
 import { Link } from 'react-router-dom'
 // import axios from 'axios'
-import { BooleanProps, isKyePressContext } from '../../Provider/CociProvider'
+import { BooleanProps, isKeyPressContext } from '../../Provider/CookieProvider'
 import DialogComp from '../dialog-comp/DialogComp'
 import useFatch from '../../Hooks/hookFetch'
 import { PuzzelProps } from '../../Provider/PuzzelsProvider'
@@ -12,7 +12,7 @@ const LoginComp = () => {
     const [password, setPassword] = useState<string>('')
     const [login, setLogin] = useState<boolean>(false)
     const [showPassword, setShowPassword] = useState<boolean>(false);
-    const isAuth = useContext<BooleanProps>(isKyePressContext)
+    const isAuth = useContext<BooleanProps>(isKeyPressContext)
     const { postFetch} = useFatch<PuzzelProps[]>('http://localhost:3040/auth/login')
 
     useEffect(()=>{
