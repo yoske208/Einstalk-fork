@@ -1,4 +1,3 @@
-import React from 'react'
 import { Route, Routes } from 'react-router-dom'
 import Home from '../pages/Home'
 import AddNewPuzzle from '../pages/AddNewPuzzle'
@@ -15,8 +14,8 @@ export default function AppRoute() {
         <Routes>
             <Route path='/' element={<Home />}></Route>
             <Route path='/Welcome' element={<Welcome />}></Route>
-            <Route path='/Puzzle' element={<Puzzle />}></Route>
             <Route path='/Users' element={<Users />}></Route>
+            <Route path='/Puzzle/:id' element={<Puzzle/>} />
             <Route path='/Profile' element={<Profile />}></Route>
             <Route path='/addNewUser' element={<AddNewUser />}></Route>
             <Route path='/addNewPuzzle' element={<AddNewPuzzle />}></Route>

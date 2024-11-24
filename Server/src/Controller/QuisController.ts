@@ -13,15 +13,9 @@ import { authMiddleware, authRequest } from "../middleware/authMiddleware";
 const router: IRouter = express.Router();
 
 router.get("/", async (req: Request, res: Response): Promise<void> => {
-  try {
-    console.log(1);
-    
+  try {    
     const allPosts = await getPosts();
-    console.log(allPosts);
-
-    res.json(allPosts);
-    console.log(res.json());
-    
+    res.json(allPosts);    
   } catch (error: any) {
     error.status || 404, error.message;
   }
