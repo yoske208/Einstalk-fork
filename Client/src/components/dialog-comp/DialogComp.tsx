@@ -1,9 +1,9 @@
 import { useContext, useRef,useEffect} from 'react'
 import styles from './dialogComp.module.css'
-import { BooleanProps, isKyePressContext } from '../../Provider/CociProvider';
+import { BooleanProps, isKeyPressContext } from '../../Provider/CookieProvider';
 
 export default function DialogComp() {
-  const isAuth = useContext<BooleanProps>(isKyePressContext)
+  const isAuth = useContext<BooleanProps>(isKeyPressContext)
   const modalRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

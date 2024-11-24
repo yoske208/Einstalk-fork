@@ -1,41 +1,41 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Stiles from "./login.module.css";
-import { Link, useNavigate } from "react-router-dom";
-// import DialogComp from "../dialog-comp/DialogComp";
-import useFatch from "../../Hooks/useFetch";
-import { UserLogContext } from "../../Provider/CociProvider";
-import { IUser } from "../../Interface/Interfaces";
-
-interface loginDTO {
-  userMan: IUser,
-  token: string
-}
+import { Link } from "react-router-dom";
+// import axios from 'axios'
+import { BooleanProps, isKeyPressContext } from "../../Provider/CookieProvider";
+import DialogComp from "../dialog-comp/DialogComp";
+import useFatch from "../../Hooks/hookFetch";
+import { PuzzelProps } from "../../Provider/PuzzelsProvider";
 
 const LoginComp = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [login, setLogin] = useState<boolean>(false);
   const [showPassword, setShowPassword] = useState<boolean>(false);
-  const { user, setUser} = useContext(UserLogContext);
-  const { postFetch, data } = useFatch<loginDTO>("http://localhost:3040/auth/login");
-  const navigate = useNavigate();
+  const isAuth = useContext<BooleanProps>(isKeyPressContext);
+  const { postFetch } = useFatch<PuzzelProps[]>(
+    "http://localhost:3040/auth/login"
+  );
 
+  useEffect(() => {
+    console.log(45);
+    console.log(isAuth.isPress);
+  }, [isAuth.isPress]);
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault(); // Prevent page reload
-    try {
-      await postFetch({ username, password });
-      if (data?.userMan) {
-        setUser(data?.userMan)
+    if (login) {
+      try {
+        await postFetch({ username, password });
+      } catch (error: any) {
+        console.error("Login failed:", error);
       }
-      if (user) {
-        navigate('/')
-      }
-    } catch (error) {
-      console.error("Login failed:", error);
     }
+    setLogin(false);
   };
-
   return (
     <>
+      {isAuth.isPress && <DialogComp />}
+
       <div>
         <form onSubmit={handleSubmit} className={Stiles.form}>
           <label htmlFor="username">Username</label>
@@ -55,10 +55,10 @@ const LoginComp = () => {
             placeholder="password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <label htmlFor="">הצג סיסמה</label>
+          <label htmlFor="showPassword">הצג סיסמה</label>
           <input
             type="checkbox"
-            id="showPassword"
+            id=""
             checked={showPassword}
             onChange={() => setShowPassword(!showPassword)}
           />
@@ -66,14 +66,14 @@ const LoginComp = () => {
             <button
               type="submit"
               className={Stiles.button}
-              onSubmit={() => handleSubmit}
+              onClick={() => setLogin(true)}
             >
               Login
             </button>
             <button
               type="button"
               className={Stiles.button}
-              onClick={() => navigate('/')}
+              onClick={() => isAuth.setIsPress(true)}
             >
               close
             </button>
