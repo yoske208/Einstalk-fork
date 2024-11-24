@@ -5,12 +5,11 @@ import PageHeader from './PageHeader'
 
 export default function Home() {
   const { puzzels } = useContext(PuzzelContext)
-  
-
-  return (
-    <div>
-      <PageHeader title='Home page'/>
-      <DisplayPuzzles puzzles={puzzels}/>
-    </div>
-  )
+  if (puzzels) {
+    return (
+      <div>ecwsdcsdcvwsvev
+        <DisplayPuzzles puzzles={puzzels}/>
+      </div>
+    )
+  }
 }

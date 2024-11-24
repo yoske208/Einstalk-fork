@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 
-export default function useFatch<T>(url: string): any {
+export default function useFatch<T>(url: string) {
   const [data, setData] = useState<T | null>(null);
   const [token, setToken] = useState<T | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -17,14 +17,13 @@ export default function useFatch<T>(url: string): any {
       }
       const userdata = await res.json();
       console.log(userdata);
-
       setData(userdata);
     } catch (error) {
       setError((error as Error).message || "the error not found");
     }
   };
 
-  const postFetch = async (body: any) => {
+  const postFetch = async (body: object) => {
     try {
       const response = await fetch(url, {
         method: "POST",
@@ -92,5 +91,5 @@ export default function useFatch<T>(url: string): any {
       return false;
     }
   };
-  return { getFatch, data, error, postFetch, token,deleteFetch,editFetch };
+  return { getFatch, data, error, postFetch, token, deleteFetch, editFetch};
 }
