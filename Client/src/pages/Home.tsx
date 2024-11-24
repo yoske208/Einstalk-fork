@@ -6,7 +6,7 @@ import useFatch from '../Hooks/hookFetch'
 
 
 export default function Home() {
-  const {puzzels} = useContext(PuzzelContext)
+  const {puzzels,setPuzzels} = useContext(PuzzelContext)
  
   
   
