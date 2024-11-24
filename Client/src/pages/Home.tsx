@@ -13,7 +13,7 @@ export default function Home() {
 
   return (
     <div>
-      <PageHeader title='Home page'/>
+      <PageHeader title='Home page' subTitle='all puzzels'/>
       <DisplayPuzzles puzzles={puzzels}/>
 
     </div>
