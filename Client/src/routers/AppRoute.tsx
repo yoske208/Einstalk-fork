@@ -23,14 +23,15 @@ export default function AppRoute() {
       {isAuth.isPress && <DialogComp/>}
       <Routes>
         <Route path="/" element={<Home />}></Route>
-        <Route path="/Welcome" element={<Welcome />}></Route>
-        <Route path="/Puzzle" element={<Puzzle />}></Route>
-        <Route path="/Users" element={<Users />}></Route>
-        <Route path="/Profile" element={<Profile />}></Route>
+        <Route path="/welcome" element={<Welcome />}></Route>
+        <Route path="/puzzle" element={<Puzzle />}></Route>
+        <Route path="/users" element={<Users />}></Route>
+        <Route path="/profile" element={<Profile />}></Route>
         <Route path="/addNewUser" element={<AddNewUser />}></Route>
-        <Route path="/addNewPuzzle" element={<AddNewPuzzle />}></Route>
+        <Route path="/puzzle/addNewPuzzle" element={<AddNewPuzzle />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/*" element={<NotFound />}></Route>
+
         {/* <Route path='/' element={<Home />}></Route> */}
       </Routes>
     </div>
