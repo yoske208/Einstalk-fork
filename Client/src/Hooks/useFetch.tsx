@@ -35,13 +35,11 @@ export default function useFatch<T>(url: string) {
         return false;
       }
       const data = await response.json();
-      if (data) {
-        setData(data);
-        return true;
-      }
-      if (data.token) {
+      
+      if (data.userMan && data.token) {
+        setData(data.userMan);
         setToken(data.token);
-        return true;
+        return data;
       }
       return false;
     } catch (error) {
