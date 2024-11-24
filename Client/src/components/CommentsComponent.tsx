@@ -1,4 +1,3 @@
-import React from 'react'
 import { IComment } from '../Interface/Interfaces'
 
 interface Prop {
