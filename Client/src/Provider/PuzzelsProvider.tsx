@@ -19,13 +19,13 @@ export const PuzzelContext = React.createContext<PuzzelProps>({
 const PuzzelsProvider = ({ children }: Props) => {
   
   const [puzzels, setPuzzels] = useState<IPuzzels[]>([]);
-  const { getFatch, data } = useFatch("http://localhost:3040/post")
+  const { getFatch, data } = useFatch<IPuzzels[]>("http://localhost:3040/post")
   
   useEffect(() => {
     getFatch()
   },[])
   useEffect(() => {
-    setPuzzels(data)
+    setPuzzels(data!)
   },[data])
 
   return (
