@@ -32,7 +32,6 @@ export default function useFatch<T>(url: string): any {
         credentials: "include", // חשוב בשביל קבלת הקוקיז
         body: JSON.stringify(body),
       });
-
       if (!response.ok) {
         return false;
       }
