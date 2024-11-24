@@ -1,13 +1,23 @@
-import React, { useContext } from 'react'
-import { PuzzelContext } from '../Provider/PuzzelsProvider'
+import { Link } from "react-router-dom";
+import CommentsComponent from "./CommentsComponent";
+import { IPuzzels } from "../Interface/Interfaces";
 
 
+interface Prop {
+  currentPuzlle: IPuzzels;
+}
 
-export default function PuzzleComponent(id: string) {
-  const { puzzels } = useContext(PuzzelContext);
-  const currentPuzlle = puzzels.find((p) => p._id === id)
-
-  return (
-    <div>{currentPuzlle?.title}</div>
-  )
+export default function PuzzleComponent({ currentPuzlle }: Prop) {
+  
+  if (currentPuzlle) {
+    return (
+      <div>
+        <h5>Puzzle Num: {currentPuzlle._id}</h5>
+        <Link to={'users/' + currentPuzlle.author}>{currentPuzlle.author}</Link>
+        <div>Comments
+          <CommentsComponent comments={currentPuzlle.comments}/>
+        </div>
+      </div>
+    );
+  }
 }

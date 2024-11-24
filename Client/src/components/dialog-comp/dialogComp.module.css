@@ -1,0 +1,89 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    max-width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+  }
+  
+  .closeButton {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #333;
+    z-index: 1;
+  }
+  
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .image {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+  }
+  
+  .info {
+    padding: 20px;
+  }
+  
+  .info h2 {
+    margin: 0 0 10px 0;
+    color: #333;
+  }
+  
+  .info p {
+    color: #666;
+    line-height: 1.5;
+  }
+  
+  .likeButton {
+    background: none;
+    border: none;
+    padding: 8px 16px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: #333;
+    transition: transform 0.2s;
+  }
+  
+  .likeButton:hover {
+    transform: scale(1.1);
+  }
+  
+  @media (max-width: 600px) {
+    .modal {
+      width: 95%;
+      max-height: 95vh;
+    }
+  
+    .content {
+      flex-direction: column;
+    }
+  
+    .info {
+      padding: 10px;
+    }
+  }

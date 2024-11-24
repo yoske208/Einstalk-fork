@@ -1,10 +1,9 @@
 import express, { IRouter } from "express";
-import postController from "../Controller/QuisController"
+import puzzeleController from "../Controller/PuzzelController"
 import authController from "../Controller/authController"
-import { authMiddleware } from "../middleware/authMiddleware";
 
 const router : IRouter = express.Router()
-router.use("/post" ,authMiddleware, postController)
+router.use("/post" , puzzeleController)
 router.use("/auth" , authController)
 
 export default router

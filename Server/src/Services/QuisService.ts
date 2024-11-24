@@ -3,22 +3,20 @@ import User, { IUser } from "../Models/userModel";
 
 const getPosts = async () => {
   try {
-    const posts = await Quiz.find((post: any) => posts.push(post));
+    const posts = await Quiz.find();
     console.log(posts);
 
     if (!posts) return "cant find posts";
-    console.log(41);
-
     return posts;
   } catch (error: any) {
     return `cant find mongo DB ${error}`;
   }
 };
 
-const getOnePost = async (postId: string) => {
+const getOnePost = async (_id: string) => {
   try {
-    console.log(postId);
-    const post = await Quiz.findById(postId);
+    console.log(_id);
+    const post = await Quiz.findById(_id);
     console.log(post);
     if (!post) return "the post is not found";
     return post;

@@ -1,15 +1,15 @@
-import { useContext, useState } from 'react'
+import { useContext } from 'react'
 import DisplayPuzzles from '../components/DisplayPuzzles'
-import { IPuzzels } from '../Interface/Interfaces'
 import { PuzzelContext } from '../Provider/PuzzelsProvider'
+import PageHeader from './PageHeader'
 
 export default function Home() {
-  const { puzzels, setPuzzels } = useContext(PuzzelContext)
-  
-
-  return (
-    <div>
-      <DisplayPuzzles puzzles={puzzels}/>
-    </div>
-  )
+  const { puzzels } = useContext(PuzzelContext)
+  if (puzzels) {
+    return (
+      <div>ecwsdcsdcvwsvev
+        <DisplayPuzzles puzzles={puzzels}/>
+      </div>
+    )
+  }
 }

@@ -1,6 +1,7 @@
 import { useState } from "react";
 
-export default function useFatch<T>(url: string): any {
+
+export default function useFatch<T>(url: string) {
   const [data, setData] = useState<T | null>(null);
   const [token, setToken] = useState<T | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -16,14 +17,13 @@ export default function useFatch<T>(url: string): any {
       }
       const userdata = await res.json();
       console.log(userdata);
-
       setData(userdata);
     } catch (error) {
       setError((error as Error).message || "the error not found");
     }
   };
 
-  const postFetch = async (body: any) => {
+  const postFetch = async (body: object) => {
     try {
       const response = await fetch(url, {
         method: "POST",
@@ -31,22 +31,16 @@ export default function useFatch<T>(url: string): any {
         credentials: "include", // חשוב בשביל קבלת הקוקיז
         body: JSON.stringify(body),
       });
-
       if (!response.ok) {
         return false;
       }
-
       const data = await response.json();
-
-      if (data.foundUser) {
-        setData(data.foundUser);
-
+      if (data) {
+        setData(data);
         return true;
       }
-
       if (data.token) {
         setToken(data.token);
-
         return true;
       }
       return false;
@@ -58,7 +52,7 @@ export default function useFatch<T>(url: string): any {
 
   const deleteFetch = async (id: string) => {
     try {
-      const response = await fetch(`${url}:id`, {
+      const response = await fetch(`${url}${id}`, {
         method: "DELETE",
         headers: { "Content-Type": "application/json" },
         credentials: "include", // חשוב בשביל קבלת הקוקיז
@@ -80,7 +74,7 @@ export default function useFatch<T>(url: string): any {
 
   const editFetch = async (id: string) => {
     try {
-      const response = await fetch(`${url}:id`, {
+      const response = await fetch(`${url}${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         credentials: "include", // חשוב בשביל קבלת הקוקיז
@@ -99,5 +93,5 @@ export default function useFatch<T>(url: string): any {
       return false;
     }
   };
-  return { getFatch, data, error, postFetch, token,deleteFetch,editFetch, };
+  return { getFatch, data, error, postFetch, token, deleteFetch, editFetch};
 }

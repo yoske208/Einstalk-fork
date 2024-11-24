@@ -3,12 +3,12 @@ import cors from "cors"
 import "dotenv/config";
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
-import router from "./src/Routers/QuisRouter";
+import router from "./src/Routers/puzzleRouter";
 
 const app : Express = express()
 
 app.use(cors({
-    origin: "0.0.0.0",
+    origin: "http://localhost:5173",
     credentials: true  
 }));
 

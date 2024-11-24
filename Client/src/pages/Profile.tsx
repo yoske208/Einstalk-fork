@@ -1,7 +1,10 @@
 import React from 'react'
+import PageHeader from './PageHeader'
 
 export default function Profile() {
   return (
-    <div>Profile</div>
+    <div>
+      <PageHeader title='Profile'/>
+    </div>
   )
 }
