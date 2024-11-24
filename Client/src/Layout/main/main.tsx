@@ -1,4 +1,3 @@
-import { Children, ReactNode } from "react";
 
 interface Props {
   children: React.ReactNode
@@ -9,7 +8,6 @@ const Main = ({children}:Props) => {
     <>
       <main>
         {children}
-        {/* <Users /> */}
 
         
       </main>
