@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Stiles from'./login.module.css'
 import { Link } from 'react-router-dom'
-// import axios from 'axios'
-import { BooleanProps, isKyePressContext } from '../../Provider/CociProvider'
+import { BooleanProps, isKeyPressContext } from '../../Provider/CociProvider'
 import useFatch from '../../Hooks/hookFetch'
 import { PuzzelProps } from '../../Provider/PuzzelsProvider'
 
