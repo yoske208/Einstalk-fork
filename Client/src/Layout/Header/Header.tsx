@@ -26,7 +26,7 @@ const Header = () => {
           }
         }}
         >{userContext?.user ? 'logout': 'login'}</button>
-        <button><Link to={"/addNewUser"}>register</Link></button>
+        <button><Link to={"/addNewUser"}></Link>register</button>
         </div>
         
 

@@ -189,3 +189,13 @@ button:hover {
 button:active {
   transform: scale(0.98);
 }
+
+.image-card{
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  padding: 5px;
+}
+image:hover {
+  box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+}
