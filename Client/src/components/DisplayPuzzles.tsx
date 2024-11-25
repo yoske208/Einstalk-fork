@@ -9,6 +9,7 @@ interface Props {
 export default function DisplayPuzzles({ puzzles }: Props) {
   return (
     <>
+    
       <div className="card-list">
         {puzzles.map((puzzle, index) => (
           <div key={index} className="card">
