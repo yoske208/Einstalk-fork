@@ -6,9 +6,6 @@ import {
   editPuzzele,
   getOnePuzzele,
   getPuzzele,
-
-
-
 } from "../Services/PuzzelService";
 import Puzzele, { IPuzzele } from "../Models/puzzleModel";
 import { authMiddleware, authRequest } from "../middleware/authMiddleware";

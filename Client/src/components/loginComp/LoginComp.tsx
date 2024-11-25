@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import Stiles from'./login.module.css'
 import { Link } from 'react-router-dom'
-import useFatch from '../../Hooks/hookFetch'
+import useFatch from '../../Hooks/useFetch'
 import { BooleanProps, isKeyPressContext } from '../../Provider/CookieProvider'
 import { UserConntext, UserProps } from '../../Provider/UserProvider'
 
@@ -32,6 +32,7 @@ const LoginComp = () => {
   return (
     <>
     <div >
+    <div className="form-container">
       <form onSubmit={handleSubmit}
       className={Stiles.form}>
           <label htmlFor="username">Username</label>
@@ -76,6 +77,7 @@ const LoginComp = () => {
           </div>
           <Link to="/addNewUser">sign up</Link>
         </form>
+        </div>
       </div>
     </>
   );

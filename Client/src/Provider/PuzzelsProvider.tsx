@@ -1,8 +1,8 @@
 
 import { IPuzzels } from "../Interface/Interfaces";
-import useFatch from "../Hooks/hookFetch";
+import useFatch from '../Hooks/useFetch';
 import React, { SetStateAction, useEffect, useState } from "react";
-const url = "http://localhost:3030/post"
+const url = "http://localhost:3040/post"
 
 
 export interface Props {
