@@ -9,7 +9,8 @@ export default function Home() {
   const { puzzels } = useContext(PuzzelContext)
   if (puzzels) {
     return (
-      <div>ecwsdcsdcvwsvev
+      <div>
+        <h1>What puzzle will you be able to solve today?</h1>
         <DisplayPuzzles puzzles={puzzels}/>
       </div>
     )

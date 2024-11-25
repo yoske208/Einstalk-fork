@@ -12,7 +12,7 @@ const Header = () => {
   return (
     <>
       <header>
-        <h3>Puzzels app</h3>
+        <h1>Puzzles app</h1>
         {userContext?.user && <ProfileComp/>}
         <div className="login_register">
         <button
