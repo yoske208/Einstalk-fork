@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { IPuzzels } from "../Interface/Interfaces";
+import PuzzleComponent from "./PuzzleComponent";
+import PageHeader from "../pages/PageHeader";
 
 interface Props {
   puzzles: IPuzzels[];
@@ -9,10 +11,9 @@ export default function DisplayPuzzles({ puzzles }: Props) {
     
   return (
     <>
-      <div>
-        {/* <DisplayPuzzles puzzles={puzzles}/> */}
+      <div className="card-list">
         {puzzles.map((puzzle, index) => (
-          <div key={index}>
+          <div key={index} className="card">
             <div>
               <h3>{puzzle.title}</h3>
               <p>Content: {puzzle.content}</p>

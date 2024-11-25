@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import CommentsComponent from "./CommentsComponent";
 import { IPuzzels } from "../Interface/Interfaces";
+import PageHeader from "../pages/PageHeader";
 
 
 interface Prop {
