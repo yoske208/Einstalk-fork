@@ -70,25 +70,23 @@ export default function useFatch<T>(url: string) {
     }
   };
 
-  const editFetch = async (id: string) => {
+  const editFetch = async (id: string, body: object) => {
     try {
       const response = await fetch(`${url}${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         credentials: "include", // חשוב בשביל קבלת הקוקיז
+        body: JSON.stringify(body)
       });
       if (!response.ok) {
         return false;
       }
-      const data = await response.json();
-      if (data.foundUser) {
-        setData(data.foundUser);
-        return true;
+      const data = await response.json();      
+      if (data) {
+        setData(data);
       }
-      return false;
     } catch (error) {
       console.error("cant to do it", error);
-      return false;
     }
   };
   return { getFatch, data, error, postFetch, token, deleteFetch, editFetch};

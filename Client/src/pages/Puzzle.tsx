@@ -11,9 +11,7 @@ export default function Puzzle() {
   return (
     <>
     <PageHeader title='Puzzele'/>
-    <button><Link to={"/puzzle/AddNewPuzzle"} >new puzzle</Link></button>
-   
-    
+    <button><Link to={"/puzzle/AddNewPuzzle"}>New Puzzle</Link></button>
     <PuzzleComponent currentPuzlle={currentPuzlle!}/>
     </>
 )

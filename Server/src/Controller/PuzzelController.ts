@@ -65,18 +65,32 @@ router.post("/", authMiddleware,async (req:authRequest,res:Response) :Promise<vo
 })
 
 router.put("/:id" ,authMiddleware ,async (req:authRequest,res:Response) : Promise<void> => {
+  console.log(1);
+  
     try {
+      console.log(2);
+      
       const id = req.params.id
+      console.log(id);
+      
       const { content } = req.body; 
+      console.log(content);
+      
       const author = req.user
+      console.log(author);
+      
+
+      // const { author, content } = req.body
+      
       if (!content || !author) {
         res.status(400).json({ message: " אחד מהאלמנטים חסר" });
         return;
      }   
-     const newComment = {content,author,};
+     
+     const newComment = {content,author};
      const savedComment = await addComment(id,newComment);
  
-        res.json(savedComment)
+     res.json(savedComment)
     } catch (error:any) {
         error.status || 404, error.message;
         

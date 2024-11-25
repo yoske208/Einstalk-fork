@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react'
+import { useContext } from 'react'
 import DisplayPuzzles from '../components/DisplayPuzzles'
 import { PuzzelContext } from '../Provider/PuzzelsProvider'
 import PageHeader from './PageHeader'
