@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import CommentsComponent from "./commentsComponent";
+import CommentsComponent from "./CommentsComponent";
 import { IPuzzels } from "../Interface/Interfaces";
 
 

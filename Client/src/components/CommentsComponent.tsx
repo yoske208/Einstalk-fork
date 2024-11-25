@@ -1,4 +1,7 @@
+import { useContext } from 'react'
 import { IComment } from '../Interface/Interfaces'
+import { UserLogContext } from '../Provider/CociProvider'
+import { Link } from 'react-router-dom'
 
 interface Prop {
     comments: IComment[]
@@ -6,18 +9,14 @@ interface Prop {
 
 export default function CommentsComponent({comments}: Prop) {
     comments = []
-    // const checkUserName = async () => {
-    //   if (document.cookie) {
+    const { user } = useContext(UserLogContext);
 
-    //   }
-    // }
-    
   return (
     <div>
         {comments.map((c) => 
             <p>{c.content} {c.author}</p>
         )}
-        {/* <input type='text' onClick={checkUserName}></input> */}
+        {user ? <input type='text'></input> : <button><Link to={'/'}></Link>Register</button>}
     </div>
   )
 }
