@@ -12,7 +12,7 @@ const LoginComp = () => {
     const [showPassword, setShowPassword] = useState<boolean>(false);
     const { postFetch} = useFatch<UserProps[]>('http://localhost:3040/auth/login')
     const isAuth = useContext<BooleanProps>(isKeyPressContext)
-    const userConntext = useContext<UserProps| null>(UserConntext)
+    const userConntext = useContext<UserProps | null>(UserConntext)
     
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault(); // Prevent page reload
@@ -22,7 +22,7 @@ const LoginComp = () => {
               userConntext?.setUser(res.userMan)
               console.log(userConntext?.user);
               
-            }catch (error: any) {
+            }catch (error) {
                 console.error("Login failed:", error);
             }
         }
