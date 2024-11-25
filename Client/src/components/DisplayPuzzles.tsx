@@ -10,6 +10,7 @@ export default function DisplayPuzzles({ puzzles }: Props) {
   return (
     <>
       <div>
+        {/* <DisplayPuzzles puzzles={puzzles}/> */}
         {puzzles.map((puzzle, index) => (
           <div key={index}>
             <div>
