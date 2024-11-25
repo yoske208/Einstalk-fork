@@ -12,7 +12,7 @@ export default function PuzzleComponent({ currentPuzlle }: Prop) {
   if (currentPuzlle) {
     return (
       <div>
-        <h5>Puzzle Num: {currentPuzlle._id}</h5>
+        <h5>Puzzle Name: {currentPuzlle.title}</h5>
         <Link to={'users/' + currentPuzlle.author}>{currentPuzlle.author}</Link>
         <div>Comments
           <CommentsComponent comments={currentPuzlle.comments}/>

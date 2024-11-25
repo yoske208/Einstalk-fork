@@ -13,7 +13,7 @@ router.post("/login", async (req: Request, res: Response): Promise<void> => {
     //V    
     if (userMan) {
       const token = genarateToken(userMan._id as string);
-      res.cookie("auth_token", token, {
+      res.cookie("token", token, {
         httpOnly: true,
         secure: false,
         maxAge: 1000 * 60 * 60,

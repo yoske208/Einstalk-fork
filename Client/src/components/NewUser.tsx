@@ -23,7 +23,7 @@ export default function NewUser() {
       console.log(data);
       return true;
     } catch (error) {
-      console.error("Register failed");
+      console.error("Register failed" + error);
       return false;
     }
   };
