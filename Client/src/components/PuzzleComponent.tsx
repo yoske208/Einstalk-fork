@@ -14,7 +14,6 @@ export default function PuzzleComponent({ currentPuzlle }: Prop) {
       <div>
         <h5>Puzzle Num: {currentPuzlle._id}</h5>
         <Link to={'users/' + currentPuzlle.author}>{currentPuzlle.author}</Link>
-        
         <div>Comments
           <CommentsComponent comments={currentPuzlle.comments}/>
         </div>

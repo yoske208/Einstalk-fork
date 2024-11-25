@@ -6,6 +6,7 @@ export default function useFatch<T>(url: string) {
   const [token, setToken] = useState<T | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+
   const getFatch = async () => {
     try {
       const res = await fetch(url, {
@@ -44,7 +45,6 @@ export default function useFatch<T>(url: string) {
       return false;
     } catch (error) {
       console.error("cant do it", error);
-      return false;
     }
   };
 
