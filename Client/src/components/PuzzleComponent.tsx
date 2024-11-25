@@ -9,6 +9,7 @@ interface Prop {
 
 export default function PuzzleComponent({ currentPuzlle }: Prop) {
   
+  
   if (currentPuzlle) {
     return (
       <div>

@@ -9,20 +9,16 @@ interface Prop {
 }
 
 export default function CommentsComponent({ comments }: Prop) {
-  comments = [];
   const [content, setContent] = useState<string>("");
   const user = useContext(UserConntext);
   const { id } = useParams();
-  const { editFetch, data } = useFatch(`http://localhost:3040/post/`);
+  const { editFetch } = useFatch(`http://localhost:3040/post/`);
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    console.log(data);
-    console.log(id);
-
-    editFetch(id!, { content });
-    console.log(data);
+    editFetch(id!, { content });    
   }
+  console.log(comments);
   return (
     <div>
       <div>
