@@ -3,7 +3,9 @@ import { useState } from "react";
 
 export default function useFatch<T>(url: string) {
   const [data, setData] = useState<T | null>(null);
+  const [token, setToken] = useState<T | null>(null);
   const [error, setError] = useState<string | null>(null);
+
 
   const getFatch = async () => {
     try {

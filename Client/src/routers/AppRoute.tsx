@@ -24,7 +24,7 @@ export default function AppRoute() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/welcome" element={<Welcome />}></Route>
-        <Route path="/puzzle" element={<Puzzle />}></Route>
+        <Route path="/puzzle/:id" element={<Puzzle />}></Route>
         <Route path="/users" element={<Users />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/addNewUser" element={<AddNewUser />}></Route>

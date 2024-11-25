@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { IComment } from '../Interface/Interfaces'
 import { Link } from 'react-router-dom'
+import { UserConntext } from '../Provider/UserProvider'
 
 interface Prop {
     comments: IComment[]
@@ -8,7 +9,7 @@ interface Prop {
 
 export default function CommentsComponent({comments}: Prop) {
     comments = []
-    const { user } = useContext(UserLogContext);
+    const { user } = useContext(UserConntext);
 
   return (
     <div>
