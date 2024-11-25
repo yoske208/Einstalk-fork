@@ -9,7 +9,6 @@ function App() {
     <>
     <CookieProvider>
     <Layout children={<AppRoute/>}/>
-
     </CookieProvider>
     </>
   )

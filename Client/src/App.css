@@ -31,9 +31,16 @@ body {
   display: flex;
   justify-content: space-around;
 }
+.login_register{
+  align-self: flex-end;
+}
+
+
 
 header {
   background-color: #613a3a;
+  display: flex;
+  flex-direction: column;
   color: white;  
   width: 800px;
   padding: 20px;
@@ -149,7 +156,8 @@ label {
   color: #333333;
 }
 input[type="text"],
-input[type="email"]
+input[type="email"],
+input[type='password']
  {
   padding: 10px;
   border: 1px solid #ddd;
@@ -159,7 +167,7 @@ input[type="email"]
 }
 button {
   padding: 12px 20px;
-  background-color: #007ACC;
+  background-color: #97cff4;
   color: #fff;
   border: none;
   border-radius: 5px;
