@@ -1,11 +1,9 @@
-import { useFetcher } from "react-router-dom";
 import  { IPuzzels } from "../Interface/Interfaces";
 import useFatch from "../Hooks/useFetch";
+
 import { useContext, useEffect, useState } from "react";
 import { PuzzelContext } from "../Provider/PuzzelsProvider";
-const url = "http://localhost:3030/post"
-
-
+const url = "http://localhost:3040/post"
 
 interface Props {
   puzzles: IPuzzels[];
@@ -24,6 +22,8 @@ export default function DisplayPuzzles({ puzzles }: Props) {
               <h3>{puzzle.title}</h3>
               <p>Content: {puzzle.content}</p>
               <p>Author: {puzzle.author}</p>
+              <div> הוסף תגובה💬</div>
+              <div> לכל התגובות💬</div>
             </div>
             
             <div>

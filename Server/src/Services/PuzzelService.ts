@@ -14,7 +14,23 @@ const getPuzzele = async () => {
     return `cant find mongo DB ${error}`;
   }
 };
+const getPuzzelesByAuthor = async (author:string) =>{
+  try{
+    if(!author){
+      throw new Error('authorid is missing')
+    }
+    const puzzeles = await Puzzele.find({author})
+    .select('title content comments')
+    .populate('author', 'username -_id')
+      if(puzzeles.length <= 0){
+        throw new Error('this author not have puzzles')
+      }
+      return puzzeles
+  }
+  catch(err){
 
+  }
+}
 const getOnePuzzele = async (_id: string) => {
   try {
     console.log(_id);
@@ -84,5 +100,6 @@ export {
     editPuzzele,
     getOnePuzzele,
     getPuzzele,
-    addComment
+    addComment,
+    getPuzzelesByAuthor
 }
