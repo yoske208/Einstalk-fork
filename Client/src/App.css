@@ -30,15 +30,21 @@ body {
   overflow: hidden;
 }
 
+.link-go-back{
+  color: #1c68a2;
+  
+}
+
 .navlink{
   display: flex;
   justify-content: space-around;
+  
 }
 .login_register{
   display: flex;
   align-self: flex-end;
   justify-content: space-between;
-  width: 30;
+  width: 20px
 
 }
 

@@ -2,7 +2,7 @@ import { useContext, useState } from "react"
 import  {IComment, IPuzzels, IUser} from "../Interface/Interfaces"
 import { PuzzelContext } from "../Provider/PuzzelsProvider"
 import useFatch from "../Hooks/useFetch"
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import { UserConntext, UserProps } from "../Provider/UserProvider"
 
 const url = "http://localhost:3040/post"
@@ -63,9 +63,9 @@ const AddPuzzleComp = () => {
             />
           </div>
           
-          
         <button type="submit">Add a new puzzele</button>
 
+        <NavLink to={"/"} className="link-go-back">go to puzzels</NavLink>
         </form>
 
         
