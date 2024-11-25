@@ -34,9 +34,13 @@ export default function useFatch<T>(url: string) {
         return false;
       }
       const data = await response.json();
-      if (data) {
-        setData(data);
+      
+      if (data.userMan && data.token) {
+        setData(data.userMan);
+        setToken(data.token);
+        return data;
       }
+      return false;
     } catch (error) {
       console.error("cant do it", error);
     }
@@ -85,5 +89,5 @@ export default function useFatch<T>(url: string) {
       return false;
     }
   };
-  return { getFatch, data, error, postFetch, deleteFetch, editFetch};
+  return { getFatch, data, error, postFetch, token, deleteFetch, editFetch};
 }

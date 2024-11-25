@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { createContext, useState } from "react";
 import { IUser } from "../Interface/Interfaces";
 
 export interface Props {
@@ -6,20 +6,20 @@ export interface Props {
 }
 
 export interface UserProps {
-  users: IUser[];
-  setUsers: React.Dispatch<React.SetStateAction<IUser[]>>;
+  user: IUser | null;
+  setUser: React.Dispatch<React.SetStateAction<IUser | null>>;
 }
 
-export const UserConntext = React.createContext<UserProps>({
-  users: [],
-  setUsers: () => {},
+export const UserConntext = createContext<UserProps>({
+  user: null,
+  setUser: (): void => {}
 });
 
 const UserProvider = ({ children }: Props) => {
-  const [users, setUsers] = useState<IUser[]>([]);
+  const [user, setUser] = useState<IUser|null>(null);
   return (
     <div>
-      <UserConntext.Provider value={{ users, setUsers }}>
+      <UserConntext.Provider value={{user, setUser}}>
         {children}
       </UserConntext.Provider>
     </div>

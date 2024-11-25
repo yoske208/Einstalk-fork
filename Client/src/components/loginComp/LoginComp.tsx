@@ -1,43 +1,39 @@
-import React, { useContext, useState } from "react";
-import Stiles from "./login.module.css";
-import { Link, useNavigate } from "react-router-dom";
-// import DialogComp from "../dialog-comp/DialogComp";
-import useFatch from "../../Hooks/useFetch";
-import { UserLogContext } from "../../Provider/CociProvider";
-import { IUser } from "../../Interface/Interfaces";
-
-interface loginDTO {
-  userMan: IUser,
-  token: string
-}
+import React, { useContext, useState } from 'react'
+import Stiles from'./login.module.css'
+import { Link } from 'react-router-dom'
+import useFatch from '../../Hooks/hookFetch'
+import { BooleanProps, isKeyPressContext } from '../../Provider/CookieProvider'
+import { UserConntext, UserProps } from '../../Provider/UserProvider'
 
 const LoginComp = () => {
-  const [username, setUsername] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [showPassword, setShowPassword] = useState<boolean>(false);
-  const { user, setUser} = useContext(UserLogContext);
-  const { postFetch, data } = useFatch<loginDTO>("http://localhost:3040/auth/login");
-  const navigate = useNavigate();
-
-  const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault(); // Prevent page reload
-    try {
-      await postFetch({ username, password });
-      if (data?.userMan) {
-        setUser(data?.userMan)
+    const [username, setUsername] = useState<string>('')
+    const [password, setPassword] = useState<string>('')
+    const [login, setLogin] = useState<boolean>(false)
+    const [showPassword, setShowPassword] = useState<boolean>(false);
+    const { postFetch} = useFatch<UserProps[]>('http://localhost:3040/auth/login')
+    const isAuth = useContext<BooleanProps>(isKeyPressContext)
+    const userConntext = useContext<UserProps| null>(UserConntext)
+    
+    const handleSubmit = async (event: React.FormEvent) => {
+        event.preventDefault(); // Prevent page reload
+        if(login){
+            try{
+              const res = await postFetch({username,password})
+              userConntext?.setUser(res.userMan)
+              console.log(userConntext?.user);
+              
+            }catch (error: any) {
+                console.error("Login failed:", error);
+            }
+        }
+        setLogin(false)
       }
-      if (user) {
-        navigate('/')
-      }
-    } catch (error) {
-      console.error("Login failed:", error);
-    }
-  };
 
   return (
     <>
-      <div>
-        <form onSubmit={handleSubmit} className={Stiles.form}>
+    <div >
+      <form onSubmit={handleSubmit}
+      className={Stiles.form}>
           <label htmlFor="username">Username</label>
           <input
             type="text"
@@ -55,10 +51,10 @@ const LoginComp = () => {
             placeholder="password"
             onChange={(e) => setPassword(e.target.value)}
           />
-          <label htmlFor="">הצג סיסמה</label>
+          <label htmlFor="showPassword">הצג סיסמה</label>
           <input
             type="checkbox"
-            id="showPassword"
+            id=""
             checked={showPassword}
             onChange={() => setShowPassword(!showPassword)}
           />
@@ -66,14 +62,14 @@ const LoginComp = () => {
             <button
               type="submit"
               className={Stiles.button}
-              onSubmit={() => handleSubmit}
+              onClick={() => setLogin(true)}
             >
               Login
             </button>
             <button
               type="button"
               className={Stiles.button}
-              onClick={() => navigate('/')}
+              onClick={() => isAuth.setIsPress(true)}
             >
               close
             </button>
@@ -85,4 +81,4 @@ const LoginComp = () => {
   );
 };
 
-export default LoginComp;
+export default LoginComp

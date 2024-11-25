@@ -1,6 +1,5 @@
 import { useContext } from 'react'
 import { IComment } from '../Interface/Interfaces'
-import { UserLogContext } from '../Provider/CociProvider'
 import { Link } from 'react-router-dom'
 
 interface Prop {
