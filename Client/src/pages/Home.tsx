@@ -10,7 +10,7 @@ export default function Home() {
   if (puzzels) {
     return (
       <div>
-        <h1>What puzzle will you be able to solve today?</h1>
+        <h2>What puzzle will you be able to solve today?</h2>
         <DisplayPuzzles puzzles={puzzels}/>
       </div>
     )
