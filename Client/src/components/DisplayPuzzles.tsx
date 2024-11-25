@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { IPuzzels } from "../Interface/Interfaces";
+import PuzzleComponent from "./PuzzleComponent";
+import PageHeader from "../pages/PageHeader";
 
 interface Props {
   puzzles: IPuzzels[];

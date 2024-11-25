@@ -40,13 +40,23 @@ router.get("/:id", async (req: Request, res: Response): Promise<void> => {
 router.post("/", authMiddleware,async (req:authRequest,res:Response) :Promise<void> => {
     try {
       const { title, content } = req.body; 
+      console.log(title, content);
+      
       const author = req.user
+      console.log(author);
+      
       if (! title || !content || !author) {
         res.status(400).json({ message: " אחד מהאלמנטים חסר" });
         return;
      } 
+     console.log(5);
+     
      const newPuzzele = new Puzzele({title,content,author,comments:[]}) 
+     console.log(newPuzzele);
+     
         const puzzele = await addPuzzele(newPuzzele)
+        console.log(puzzele);
+        
         res.status(200).json(puzzele)
         
     } catch (error:any) {

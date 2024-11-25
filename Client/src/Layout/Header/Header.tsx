@@ -33,9 +33,8 @@ const Header = () => {
         <div className="navlink">
         <NavLink to={'/Welcome'}>Welcome</NavLink>
         <NavLink to={'/'}>EinsTalk</NavLink>
-        <NavLink to={'/Puzzle'}>Puzzle</NavLink>
         <NavLink to={'/Profile'}>Profile</NavLink>
-        <NavLink to={'/Users'}>Users</NavLink>
+        {/* <NavLink to={'/Users'}>Users</NavLink> */}
 
          
         </div>

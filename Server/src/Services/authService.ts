@@ -46,7 +46,7 @@ const loginUser = async (username: string, password: string) => {
 
 const logoutUser = (res: Response): void => {
   try {
-    res.clearCookie("auth_token", {
+    res.clearCookie("token", {
       httpOnly: true,
       secure: true,
       sameSite: "strict",
