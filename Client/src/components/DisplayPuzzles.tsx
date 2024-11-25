@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import { IPuzzels } from "../Interface/Interfaces";
-import PuzzleComponent from "./PuzzleComponent";
-import PageHeader from "../pages/PageHeader";
+
 
 interface Props {
   puzzles: IPuzzels[];
@@ -19,7 +18,7 @@ export default function DisplayPuzzles({ puzzles }: Props) {
               <h3>{puzzle.title}</h3>
               <p>Content: {puzzle.content}</p>
               <p>Author: {puzzle.author}</p>
-              <Link to={`/Puzzle/${puzzle._id}`}>Open The Puzzle</Link>
+              <button style={{padding: '10px', background: '#db9f70', color: 'black'}}><Link to={`/Puzzle/${puzzle._id}`}>Open The Puzzle</Link></button>
             </div>
           </div>
         ))}

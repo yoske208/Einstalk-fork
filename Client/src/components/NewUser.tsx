@@ -22,7 +22,7 @@ export default function NewUser() {
       const data = await response.json();
       return data;
     } catch (error) {
-      console.error("Register failed");
+      console.error("Register failed" + error);
       return false;
     }
   };
