@@ -4,7 +4,7 @@ import AddNewPuzzle from "../pages/AddNewPuzzle/AddNewPuzzle";
 import Welcome from "../pages/welcome/Welcome";
 import Puzzle from "../pages/Puzzle";
 import Users from "../pages/Users";
-import Profile from "../pages/Profile";
+import Profile from "../pages/profile-page/Profile";
 import AddNewUser from "../pages/AddNewUser";
 import NotFound from "../pages/NotFound";
 import LoginPage from "../pages/LoginPage";

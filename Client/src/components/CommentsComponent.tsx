@@ -9,7 +9,7 @@ interface Prop {
 
 export default function CommentsComponent({comments}: Prop) {
     comments = []
-    const { user } = useContext(UserConntext);
+    const  user  = useContext(UserConntext);
 
   return (
     <div>
