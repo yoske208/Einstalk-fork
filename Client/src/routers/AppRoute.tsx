@@ -8,25 +8,25 @@ import Profile from "../pages/profile-page/Profile";
 import AddNewUser from "../pages/AddNewUser";
 import NotFound from "../pages/NotFound";
 import LoginPage from "../pages/LoginPage";
-import DialogComp from '../components/dialog-comp/DialogComp'
+import DialogComp from "../components/dialog-comp/DialogComp";
 import { useContext, useEffect } from "react";
 import { BooleanProps, isKeyPressContext } from "../Provider/CookieProvider";
-import { UserConntext, UserProps } from "../Provider/UserProvider";
 
 export default function AppRoute() {
-  const isAuth = useContext<BooleanProps>(isKeyPressContext)
-  const userConntext = useContext<UserProps | null>(UserConntext)
-  useEffect(()=>{
+  const isAuth = useContext<BooleanProps>(isKeyPressContext);
+  useEffect(() => {
     console.log(45);
     console.log(isAuth.isPress);
-  },[isAuth.isPress])
+  }, [isAuth.isPress]);
   return (
     <div>
-      {!userConntext?.user && isAuth.isPress && <DialogComp/>}
+      {isAuth.isPress && <DialogComp />}
       <Routes>
         <Route path="/" element={<Home />}></Route>
+        <Route path="/home" element={<Home />}></Route>
+        <Route path="/" element={<Home />}></Route>
         <Route path="/welcome" element={<Welcome />}></Route>
-        <Route path="/puzzle" element={<Puzzle />}></Route>
+        <Route path="/puzzle/:id" element={<Puzzle />}></Route>
         <Route path="/users" element={<Users />}></Route>
         <Route path="/profile" element={<Profile />}></Route>
         <Route path="/addNewUser" element={<AddNewUser />}></Route>
