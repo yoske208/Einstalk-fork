@@ -14,7 +14,8 @@ export default function PuzzleComponent({ currentPuzlle }: Prop) {
       <>
       <div className="card-list">
       <div className="card">
-        <h5>Puzzle Name: {currentPuzlle.title}</h5>
+        <h4>Puzzle Name: {currentPuzlle.title}</h4>
+        <h3>{currentPuzlle.content}</h3>
         <div>Comments
           <CommentsComponent comments={currentPuzlle.comments}/>
         </div>

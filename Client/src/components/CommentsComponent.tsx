@@ -23,7 +23,7 @@ export default function CommentsComponent({ comments }: Prop) {
     <div>
       <div>
         {comments.map((c) => (
-          <p>
+          <p style={{background: '#9e8d24', padding: '5px', borderRadius: '20px'}}>
             {c.content}
           </p>
         ))}
@@ -41,9 +41,13 @@ export default function CommentsComponent({ comments }: Prop) {
             </form>
           </div>
         ) : (
+          <div>
+            <h3>Before You adding comment you need to Register</h3>
           <button>
             <Link to={"/"}></Link>Register
           </button>
+          </div>
+          
         )}
       </div>
     </div>
