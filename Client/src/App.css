@@ -106,6 +106,10 @@ main {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   font-family: 'Poppins', sans-serif;
 }
+.nav{
+  font-size: 27px;
+  color: #2b2006;
+}
 
 .card h3 {
 
