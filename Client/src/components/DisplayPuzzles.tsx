@@ -1,6 +1,6 @@
 import { useFetcher } from "react-router-dom";
 import  { IPuzzels } from "../Interface/Interfaces";
-import useFatch from "../Hooks/hookFetch";
+import useFatch from "../Hooks/useFetch";
 import { useContext, useEffect, useState } from "react";
 import { PuzzelContext } from "../Provider/PuzzelsProvider";
 const url = "http://localhost:3030/post"
