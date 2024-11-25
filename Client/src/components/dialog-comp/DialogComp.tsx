@@ -27,11 +27,17 @@ export default function DialogComp() {
     <div className={styles.modal} ref={modalRef}>
         <h3>to add comment you need to login</h3>
         <button
-        onClick={()=> navigate('/login')}
+        onClick={()=> {
+          isAuth.setIsPress(false)
+          navigate('/login')
+        }}
         >login</button>
         <button
-        onClick={()=> navigate('/addNewUser')}
-        >chanel</button>
+        onClick={()=> {
+          isAuth.setIsPress(false)
+          navigate('/addNewUser')
+        }}
+        >sign up</button>
         </div>
         </div>
     </>

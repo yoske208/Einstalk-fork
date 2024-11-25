@@ -32,6 +32,7 @@ const LoginComp = () => {
   return (
     <>
     <div >
+    <div className="form-container">
       <form onSubmit={handleSubmit}
       className={Stiles.form}>
           <label htmlFor="username">Username</label>
@@ -76,6 +77,7 @@ const LoginComp = () => {
           </div>
           <Link to="/addNewUser">sign up</Link>
         </form>
+        </div>
       </div>
     </>
   );

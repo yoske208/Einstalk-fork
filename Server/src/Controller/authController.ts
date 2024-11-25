@@ -13,7 +13,7 @@ router.post("/login", async (req: Request, res: Response): Promise<void> => {
     //V    
     if (userMan) {
       const token = genarateToken(userMan._id as string);
-      res.cookie("token", token, {
+      res.cookie("auth_token", token, {
         httpOnly: true,
         secure: false,
         maxAge: 1000 * 60 * 60,
@@ -25,7 +25,7 @@ router.post("/login", async (req: Request, res: Response): Promise<void> => {
   }
 });
 
-router.post("/logout", (req: Request, res: Response): void => {
+router.get("/logout", (req: Request, res: Response): void => {
   try {
     logoutUser(res);
     res.status(200).json({ message: "Logged out successfully" });
