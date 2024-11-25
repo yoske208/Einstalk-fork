@@ -5,14 +5,14 @@ interface Props {
   puzzles: IPuzzels[];
 }
 
-export default function DisplayPuzzles({ puzzles }: Props) {  
-    
+export default function DisplayPuzzles({ puzzles }: Props) {
   return (
     <>
       <div>
         {puzzles.map((puzzle, index) => (
           <div key={index}>
             <div>
+              <img src={puzzle.img} alt={puzzle.title} />
               <h3>{puzzle.title}</h3>
               <p>Content: {puzzle.content}</p>
               <p>Author: {puzzle.author}</p>

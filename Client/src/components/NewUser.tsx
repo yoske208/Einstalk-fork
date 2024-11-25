@@ -20,8 +20,7 @@ export default function NewUser() {
       }
 
       const data = await response.json();
-      console.log(data);
-      return true;
+      return data;
     } catch (error) {
       console.error("Register failed");
       return false;
