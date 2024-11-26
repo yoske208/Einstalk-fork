@@ -6,6 +6,7 @@ export default function useFatch<T>(url: string) {
   const [token, setToken] = useState<T | null>(null);
   const [error, setError] = useState<string | null>(null);
 
+
   const getFatch = async () => {
     try {
       const res = await fetch(url, {
@@ -35,18 +36,15 @@ export default function useFatch<T>(url: string) {
         return false;
       }
       const data = await response.json();
-      if (data) {
-        setData(data);
-        return true;
-      }
-      if (data.token) {
+      
+      if (data.userMan && data.token) {
+        setData(data.userMan);
         setToken(data.token);
-        return true;
+        return data;
       }
       return false;
     } catch (error) {
       console.error("cant do it", error);
-      return false;
     }
   };
 
@@ -72,25 +70,23 @@ export default function useFatch<T>(url: string) {
     }
   };
 
-  const editFetch = async (id: string) => {
+  const editFetch = async (id: string, body: object) => {
     try {
       const response = await fetch(`${url}${id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         credentials: "include", // חשוב בשביל קבלת הקוקיז
+        body: JSON.stringify(body)
       });
       if (!response.ok) {
         return false;
       }
-      const data = await response.json();
-      if (data.foundUser) {
-        setData(data.foundUser);
-        return true;
+      const data = await response.json();      
+      if (data) {
+        setData(data);
       }
-      return false;
     } catch (error) {
       console.error("cant to do it", error);
-      return false;
     }
   };
   return { getFatch, data, error, postFetch, token, deleteFetch, editFetch};

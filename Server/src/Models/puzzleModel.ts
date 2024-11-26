@@ -3,11 +3,12 @@ import { IUser } from "./userModel";
 
 export interface IComment {
   content: string;
-  author: IUser['_id'];
+  author: IUser["_id"];
 }
 
 export interface IPuzzele extends Document {
   title: string;
+  img: string;
   content: string;
   author: IUser["_id"];
   comments: IComment[];
@@ -28,27 +29,36 @@ export const CommentSchema = new Schema<IComment>(
   { timestamps: true }
 );
 
-const PuzzeleSchema = new Schema<IPuzzele>({
-  //post schema
-  title:{
-    type:String,
-    require: [true,'enter title'],
-    min:5,
-    max:30
+const PuzzeleSchema = new Schema<IPuzzele>(
+  {
+    //post schema
+    title: {
+      type: String,
+      require: [true, "enter title"],
+      min: 5,
+      max: 30,
+    },
+    img: {
+      type: String,
+      require: [false, "no image post"],
+      default: "Einstalk.webp",
+      min: 10,
+    },
+    content: {
+      type: String,
+      require: [true, "no content post"],
+      min: 1,
+    },
+    author: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
+    comments: {
+      type: [CommentSchema],
+    },
   },
-  content:{
-    type:String,
-    require: [true,'no content post'],
-    min:1
-  },
-  author:{
-    type: Schema.Types.ObjectId,
-    ref: 'User'
-  },
-  comments:{
-    type: [CommentSchema]
-  }
-},{timestamps:true})
-PuzzeleSchema.index({author:1})
-CommentSchema.index({author:1})
+  { timestamps: true }
+);
+PuzzeleSchema.index({ author: 1 });
+CommentSchema.index({ author: 1 });
 export default mongoose.model<IPuzzele>("PostPuzzle", PuzzeleSchema);
