@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
-import { IComment } from "../Interface/Interfaces";
+import { IComment } from "../../Interface/Interfaces";
 import { Link, useParams } from "react-router-dom";
-import { UserConntext } from "../Provider/UserProvider";
-import useFatch from "../Hooks/useFetch";
+import { UserConntext } from "../../Provider/UserProvider";
+import useFatch from "../../Hooks/useFetch";
 
 interface Prop {
   comments: IComment[];

@@ -1,4 +1,4 @@
-import LoginComp from '../components/loginComp/LoginComp'
+import LoginComp from '../../Components/IoginComp/LoginComp'
 
 const LoginPage = () => {
   

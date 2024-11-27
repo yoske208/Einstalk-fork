@@ -1,5 +1,5 @@
 import React from 'react'
-import RegisterComponent from '../components/register/RegisterComponent'
+import RegisterComponent from '../../Components/Register/RegisterComponent'
 
 export default function Register() {
   return (

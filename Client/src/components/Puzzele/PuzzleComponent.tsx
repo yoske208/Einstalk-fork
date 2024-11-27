@@ -1,5 +1,5 @@
 import CommentsComponent from "./CommentsComponent";
-import { IPuzzels } from "../Interface/Interfaces";
+import { IPuzzels } from "../../Interface/Interfaces";
 
 
 interface Prop {

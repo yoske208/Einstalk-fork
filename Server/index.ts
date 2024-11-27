@@ -4,8 +4,13 @@ import "dotenv/config";
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 import router from "./src/Routers/puzzleRouter";
+import loadInitialDataUser from "./InitialData/InitialDataUser";
+import loadInitialDataPuzzele from "./InitialData/InitialDataPuzzeles";
 
 const app : Express = express()
+
+// loadInitialDataUser().catch(console.error);
+// loadInitialDataPuzzele().catch(console.error);
 
 app.use(cors({
     origin: "http://localhost:5173",

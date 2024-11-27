@@ -5,6 +5,7 @@ import App from "./App.tsx";
 import { BrowserRouter } from "react-router-dom";
 import PuzzelsProvider from "./Provider/PuzzelsProvider.tsx";
 import UserProvider from "./Provider/UserProvider.tsx";
+import { AuthProvider } from "./Provider/AuthProvider.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

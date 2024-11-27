@@ -11,7 +11,7 @@ const ProfileComp = () => {
           className={Styles.image}
            src="https://upload.wikimedia.org/wikipedia/he/f/fe/Generic_look_of_fantasy_films_1_-_made_with_DALL-E_3.png" alt=""
             />
-            <span className={Styles.name}>welcame {userContext?.user?.username}</span>
+            <span className={Styles.name}>welcame {userContext?.user?.username.toUpperCase()} !!!</span>
             </div>
     </>
   )

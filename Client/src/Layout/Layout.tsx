@@ -1,6 +1,6 @@
 import Footer from "../Layout/Footer/Footer"
 import Header from "./Header/Header"
-import Main from "./Main/Main"
+import Main from "../Layout/main/main"
 // import Users from "./Main/User/Users"
 
 interface Props {

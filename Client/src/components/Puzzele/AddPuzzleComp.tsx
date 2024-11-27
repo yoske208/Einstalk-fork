@@ -1,11 +1,11 @@
 import { useContext, useState } from "react"
-import  {IComment, IPuzzels, IUser} from "../Interface/Interfaces"
-import { PuzzelContext } from "../Provider/PuzzelsProvider"
-import useFatch from "../Hooks/useFetch"
+import  {IComment, IPuzzels, IUser} from "../../Interface/Interfaces"
+import { PuzzelContext } from "../../Provider/PuzzelsProvider"
+import useFatch from "../../Hooks/useFetch"
 import { Link, NavLink } from "react-router-dom"
-import { UserConntext, UserProps } from "../Provider/UserProvider"
+import { UserConntext, UserProps } from "../../Provider/UserProvider"
 
-const url = "http://localhost:3040/post"
+const url = "http://localhost:3030/post"
 
 
 const AddPuzzleComp = () => {
@@ -22,10 +22,15 @@ const AddPuzzleComp = () => {
     
     const newPuzzele  = { title, content };
     console.log(newPuzzele);
+    console.log(2);
+    
     console.log(puzzels);
     
     console.log(puzzels);
     postFetch(newPuzzele)
+
+    console.log(3);
+    
     ;
     console.log(data);
     setPuzzels(data!)

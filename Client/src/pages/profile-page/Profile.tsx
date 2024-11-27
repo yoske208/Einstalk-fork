@@ -1,6 +1,6 @@
 import React from 'react'
-import PageHeader from '../PageHeader'
-import ProfileComp from '../../components/ProfileComp'
+import PageHeader from '../PageHeader/PageHeader'
+import ProfileComp from '../../Components/ProfileComp'
 
 
 export default function Profile() {

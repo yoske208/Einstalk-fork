@@ -1,5 +1,5 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
-import ProfileComp from "./profile-heder/ProfileComp";
+import ProfileComp from "./Profile-heder/ProfileComp";
 import { useContext } from "react";
 import { UserConntext } from "../../Provider/UserProvider";
 import useFatch from "../../Hooks/useFetch";

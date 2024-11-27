@@ -1,4 +1,4 @@
-import PageHeader from '../pages/PageHeader'
+import PageHeader from '../PageHeader/PageHeader'
 
 const ErrorPage = () => {
   return (
