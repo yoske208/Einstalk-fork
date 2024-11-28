@@ -52,10 +52,10 @@ const DisplayOnePuzzele = ({ puzzles }: Props) => {
                 </button>
                 <button onClick={backindex}
                 // disabled={indexImage === 0}
-                >Back</button>
+                >Back 👈{"<---"}</button>
                 <button onClick={nextindex}
                 // disabled={indexImage === puzzles.length -1}
-                >Next</button>
+                >Next 👉{"--->"}</button>
               </div>
             </div>
         
